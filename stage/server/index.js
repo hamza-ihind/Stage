@@ -40,9 +40,18 @@ app.get('/api/get', (req, res) => {
 	});
 });
 
-// Editer
-
 // Supprimer
+
+app.delete('/api/delete/:matricule', (req, res) => {
+	const name = req.params.matricule;
+	const sqlDelete = 'DELETE FROM profs WHERE matricule = ?';
+
+	db.query(sqlDelete, name, (err, result) => {
+		if (err) console.log(err);
+	});
+});
+
+// Following the server Status
 
 app.listen(3001, () => {
 	console.log('worked back');
