@@ -21,9 +21,9 @@
 	box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
 
 	& thead tr {
-		background-color: #009879;
+		background-color: #08508b;
 		color: white;
-		text-align: left;
+		text-align: center;
 		font-weight: bold;
 	}
 
@@ -34,6 +34,7 @@
 
 	& tbody tr {
 		border-bottom: 1px solid #dddddd;
+		text-align: center;
 	}
 
 	& tbody tr:nth-of-type(odd) {
@@ -42,5 +43,11 @@
 
 	& tbody tr:nth-of-type(even) {
 		background-color: #dddddd;
+	}
+
+	.list-buttons {
+		display: flex;
+		justify-content: center;
+		gap: 20px;
 	}
 }
