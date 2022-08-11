@@ -1,21 +1,40 @@
-import './modal-delete.styles.scss'
+import { useState } from 'react';
+import Button from 'react-bootstrap/Button';
+import Modal from 'react-bootstrap/Modal';
 
-const ModalDelete = ({ text, closeModal, deleteVar, value }) => {
-    return (
-        <div className='modalBackground'>
-            <div className='modalContainer'>
-                <div className='titleCloseBtn'>
-                    <button onClick={() => closeModal(false)}> X </button>
-                </div>
-                <div className='title'><h1>Vous etes sur ?</h1></div>
-                <div className='body'><p>Est ce-que vous etes sur de supprimer {text}</p></div>
-                <div className='footer'>
-                    <button id='cancelBtn' onClick={() => closeModal(false)}>Anuuler</button>
-                    <button onClick={() => { deleteVar(value) }}>Continuer</button>
-                </div>
-            </div>
-        </div>
-    )
+const ModalDelete = ({ text, deleteVar, value }) => {
+  const [show, setShow] = useState(false)
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+
+  const mixed = () => {
+    setShow(false);
+    deleteVar(value);
+  }
+
+  return (
+    <>
+      <Button variant="primary" onClick={handleShow}>
+        Delete
+      </Button>
+
+      <Modal show={show} onHide={handleClose}>
+        <Modal.Header closeButton>
+          <Modal.Title>T'es sur ?</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>Est ce que vous etes sur de supprimer {text}</Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={handleClose}>
+            Annuler
+          </Button>
+          <Button variant="danger" onClick={mixed} >
+            Supprimer
+          </Button>
+        </Modal.Footer>
+      </Modal>
+    </>
+  );
 }
 
 export default ModalDelete;
