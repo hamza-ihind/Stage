@@ -1,5 +1,8 @@
 import { useState, useEffect } from "react";
-import ModalDelete from "../modal-delete/modal-delete.component";
+
+import ModalDelete from "../../components/modals/modal-delete.component";
+import ModalError from "../../components/modals/modal-error.component";
+
 import "./ajout-prof.styles.scss";
 import Axios from "axios";
 
@@ -29,8 +32,14 @@ const AjoutProf = () => {
             matricule,
             email,
         }).then((response) => {
-            refreshProfs();
-            console.log(response);
+            if (response.data) {
+                if (nom && email && matricule) refreshProfs();
+                else {
+                    console.error('error')
+                }
+            } else {
+                console.error('error')
+            }
         });
     };
 
@@ -38,7 +47,6 @@ const AjoutProf = () => {
         Axios.post("http://localhost:3001/api/delete", { matricule }).then(
             (response) => {
                 refreshProfs();
-                console.log(response);
             }
         );
     };
