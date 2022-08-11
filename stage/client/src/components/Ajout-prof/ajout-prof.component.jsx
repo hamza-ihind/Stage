@@ -1,11 +1,7 @@
 import { useState, useEffect } from 'react'
-
 import ModalDelete from '../modal-delete/modal-delete.component'
-
 import './ajout-prof.styles.scss'
-
 import Axios from 'axios'
-
 
 const AjoutProf = () => {
 
@@ -25,7 +21,6 @@ const AjoutProf = () => {
 
     const createProf = () => {
         Axios.post("http://localhost:3001/api/insert", { nom, matricule, email })
-        setProfs([...profs, { nom, matricule, email }])
     }
 
     const deleteProf = (prof) => {

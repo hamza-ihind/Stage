@@ -24,10 +24,13 @@ app.post('/api/insert', (req, res) => {
 	const matricule = req.body.matricule;
 	const nom = req.body.nom;
 	const email = req.body.email;
+
 	const sqlInsert = 'INSERT INTO profs (matricule, nom, email) VALUES (?,?,?)';
 
 	db.query(sqlInsert, [matricule, nom, email], (err, result) => {
-		console.log(result);
+		if (err) {
+			console.log('matricule doublée');
+		}
 	});
 });
 
@@ -51,12 +54,10 @@ app.delete('/api/delete/:matricule', (req, res) => {
 	});
 });
 
-// Following the server Status
+//
 
 app.listen(3001, () => {
-	console.log('worked back');
+	console.log('working');
 });
 
-// /////////////
-
-// Ajouter des filières: Par Admin
+// Ajouter des (filières + Niveaux): Par Admin
