@@ -17,7 +17,7 @@ const AjoutProf = () => {
     const [profs, setProfs] = useState([]);
 
     const refreshProfs = () => {
-        Axios.get("http://localhost:3001/api/get").then((response) => {
+        Axios.get("http://localhost:3001/api/get/prof").then((response) => {
             setProfs(response.data);
         });
     };
@@ -27,7 +27,7 @@ const AjoutProf = () => {
     }, []);
 
     const createProf = () => {
-        Axios.post("http://localhost:3001/api/insert", {
+        Axios.post("http://localhost:3001/api/insert/prof", {
             nom,
             matricule,
             email,
@@ -44,8 +44,8 @@ const AjoutProf = () => {
     };
 
     const deleteProf = (matricule) => {
-        Axios.post("http://localhost:3001/api/delete", { matricule }).then(
-            (response) => {
+        Axios.post("http://localhost:3001/api/delete/prof", { matricule }).then(
+            () => {
                 refreshProfs();
             }
         );
