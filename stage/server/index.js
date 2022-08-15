@@ -13,6 +13,7 @@ app.use(express.json());
 const addProf = require('./server_modules/ajout-prof.js');
 const addFiliere = require('./server_modules/ajout-filiere.js');
 const niveaux = require('./server_modules/niveaux.js');
+const modules = require('./server_modules/ajout-module');
 
 const db = mysql.createPool({
 	user: dbconfig.USER,

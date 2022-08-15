@@ -26,7 +26,9 @@ const ModalFullscreen = ({ niv, name }) => {
 
                 </Modal.Header>
 
-                <Modal.Body>Modal body content</Modal.Body>
+                <Modal.Body>
+
+                </Modal.Body>
 
             </Modal>
         </>

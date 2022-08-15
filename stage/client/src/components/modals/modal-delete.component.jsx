@@ -21,10 +21,14 @@ const ModalDelete = ({ text, deleteVar, value }) => {
       </Button>
 
       <Modal show={show} onHide={handleClose}>
+
         <Modal.Header closeButton>
           <Modal.Title>T'es sur ?</Modal.Title>
+
         </Modal.Header>
+
         <Modal.Body>Est ce que vous etes sur de supprimer {text}</Modal.Body>
+
         <Modal.Footer>
           <Button variant="secondary" onClick={handleClose}>
             Annuler
@@ -33,6 +37,7 @@ const ModalDelete = ({ text, deleteVar, value }) => {
             Supprimer
           </Button>
         </Modal.Footer>
+
       </Modal>
     </>
   );
