@@ -1,14 +1,13 @@
 import { useState, useEffect } from "react";
-import { Link } from 'react-router-dom'
 
 import "./ajout-filiere.styles.scss";
 
 import ModalDelete from "../../components/modals/modal-delete.component";
-/* import ModalError from "../../components/modals/modal-error.component";
- */
+import ModalNiveaux from "../../components/modals/modal-niveaux/modal-niveaux.component";
+
 import Axios from "axios";
 
-import { Button, Form, Col } from "react-bootstrap";
+import { Button, Form } from "react-bootstrap";
 
 const AjoutFiliere = () => {
     const [filieres, setFilieres] = useState([]);
@@ -16,7 +15,7 @@ const AjoutFiliere = () => {
     const [nom, setNom] = useState("");
 
     const refreshFilieres = () => {
-        Axios.get("http://localhost:3001/api/get/niveau").then((response) => {
+        Axios.get("http://localhost:3001/api/get/filiere").then((response) => {
             setFilieres(response.data);
         });
     };
@@ -26,7 +25,7 @@ const AjoutFiliere = () => {
     }, []);
 
     const createfiliere = () => {
-        Axios.post("http://localhost:3001/api/insert/niveau", {
+        Axios.post("http://localhost:3001/api/insert/filiere", {
             nom,
             nombreNiveau,
         }).then((response) => {
@@ -35,7 +34,7 @@ const AjoutFiliere = () => {
     };
 
     const deleteFiliere = (id) => {
-        Axios.post("http://localhost:3001/api/delete/niveau", { id }).then(() => {
+        Axios.post("http://localhost:3001/api/delete/filiere", { id }).then(() => {
             refreshFilieres();
         });
     };
@@ -94,11 +93,7 @@ const AjoutFiliere = () => {
                                         deleteVar={deleteFiliere}
                                         value={filiere.id}
                                     />
-                                    <Link className='nav-link' to='/filieres/'>
-                                        <Button variant="secondary" >
-                                            plus de details
-                                        </Button>
-                                    </Link>
+                                    <ModalNiveaux nomFiliere={filiere.nom} id={filiere.id} />
                                 </td>
                             </tr>
                         );

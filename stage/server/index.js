@@ -12,6 +12,7 @@ app.use(express.json());
 
 const addProf = require('./server_modules/ajout-prof.js');
 const addFiliere = require('./server_modules/ajout-filiere.js');
+const niveaux = require('./server_modules/niveaux.js');
 
 const db = mysql.createPool({
 	user: dbconfig.USER,
@@ -26,3 +27,4 @@ app.listen(3001, () => {
 
 addProf.handling(app, db);
 addFiliere.handling(app, db);
+niveaux.handling(app, db);

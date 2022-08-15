@@ -17,7 +17,7 @@ const ModalDelete = ({ text, deleteVar, value }) => {
   return (
     <>
       <Button variant="danger" onClick={handleShow}>
-        Delete
+        Supprimer
       </Button>
 
       <Modal show={show} onHide={handleClose}>
