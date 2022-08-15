@@ -1,9 +1,8 @@
-import React, { useState } from 'react';
-import Button from 'react-bootstrap/Button';
-import Modal from 'react-bootstrap/Modal';
+import React, { useState } from "react";
+import Button from "react-bootstrap/Button";
+import Modal from "react-bootstrap/Modal";
 
-const ModalFullscreen = ({ niv, name }) => {
-
+const ModalFullscreen = ({ niv, name, id_niveau }) => {
     const [fullscreen, setFullscreen] = useState(true);
     const [show, setShow] = useState(false);
 
@@ -14,25 +13,21 @@ const ModalFullscreen = ({ niv, name }) => {
 
     return (
         <>
-            <Button variant='dark' onClick={() => handleShow(true)}>
+            <Button variant="dark" onClick={() => handleShow(true)}>
                 Niveau {niv}
             </Button>
 
             <Modal show={show} fullscreen={fullscreen} onHide={() => setShow(false)}>
-
                 <Modal.Header closeButton>
-
-                    <Modal.Title>Niveau {niv}: {name}</Modal.Title>
-
+                    <Modal.Title>
+                        Niveau {niv}: {name}
+                    </Modal.Title>
                 </Modal.Header>
 
-                <Modal.Body>
-
-                </Modal.Body>
-
+                <Modal.Body>{"id niveau " + id_niveau}</Modal.Body>
             </Modal>
         </>
     );
-}
+};
 
 export default ModalFullscreen;

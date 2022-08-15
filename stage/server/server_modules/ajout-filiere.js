@@ -12,7 +12,7 @@ const handling = (app, db) => {
 				res.send(false);
 			} else {
 				res.send(true);
-				for (i = 0; i < nombreNiveau; i++) {
+				for (let i = 0; i < nombreNiveau; i++) {
 					const query =
 						'INSERT INTO niveaux (id_filiere, ordonnancement, nmbr_modules) VALUES (?,?,?)';
 					db.query(query, [result.insertId, i + 1, 0], (err, res) => {

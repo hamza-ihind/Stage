@@ -1,28 +1,29 @@
-import React, { useState, useEffect } from 'react';
-import Button from 'react-bootstrap/Button';
-import Modal from 'react-bootstrap/Modal';
-import Axios from 'axios';
-import './modal-niveaux.styles.scss'
+import React, { useState, useEffect } from "react";
+import Button from "react-bootstrap/Button";
+import Modal from "react-bootstrap/Modal";
+import Axios from "axios";
+import "./modal-niveaux.styles.scss";
 
-import ModalFullscreen from '../modal-full-screen.component';
+import ModalFullscreen from "../modal-full-screen/modal-full-screen.component";
 
 function ModalNiveaux({ nomFiliere, id }) {
-
     const [lgShow, setLgShow] = useState(false);
-    const [niveaux, setNiveaux] = useState([])
+    const [niveaux, setNiveaux] = useState([]);
 
     // Quelques fonctions
     const id_filiere = id;
 
     // Backend Stuff
-    const refreshNiveaux = () => {
-        Axios.get("http://localhost:3001/api/get/niveau").then((response) => {
-            setNiveaux(response.data);
-        });
+    const refreshNiveaux = (id) => {
+        Axios.get("http://localhost:3001/api/get/niveau?id_filiere=" + id).then(
+            (response) => {
+                setNiveaux(response.data);
+            }
+        );
     };
 
     useEffect(() => {
-        refreshNiveaux();
+        refreshNiveaux(id_filiere);
     }, []);
 
     return (
@@ -42,17 +43,18 @@ function ModalNiveaux({ nomFiliere, id }) {
                 </Modal.Header>
 
                 <Modal.Body>
-                    <div className='niveaux-buttons gap-2' >
+                    <div className="niveaux-buttons gap-2">
                         {niveaux.map((niveau) => {
-                            if ((niveau.id_filiere) === (id_filiere)) {
-                                return (
-                                    <ModalFullscreen niv={niveau.ordonnancement} name={nomFiliere} />
-                                )
-                            }
+                            return (
+                                <ModalFullscreen
+                                    niv={niveau.ordonnancement}
+                                    name={nomFiliere}
+                                    id_niveau={niveau.id}
+                                />
+                            );
                         })}
                     </div>
                 </Modal.Body>
-
             </Modal>
         </>
     );
