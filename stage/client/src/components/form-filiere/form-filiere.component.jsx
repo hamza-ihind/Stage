@@ -4,13 +4,17 @@ import { Form, Button } from "react-bootstrap";
 
 import Axios from 'axios'
 
+import './form-filiere.styles.scss'
+
+import ModalDelete from "../modals/modal-delete.component";
+import ModalModule from "../modals/modal-module/modal-module.component";
+
 const FormFiliere = ({ id_niveau }) => {
 
     // states des informations des modules
     const [nom, setNom] = useState("");
     const [semestre, setSemestre] = useState("");
     const [nombreSM, setNombreSM] = useState("");
-
     const [modules, setModules] = useState([])
 
     const refreshModules = () => {
@@ -42,48 +46,85 @@ const FormFiliere = ({ id_niveau }) => {
 
     return (
         <div>
-            <h1 className="title">Ajoutez une filière</h1>
 
-            <div className="add-filiere">
+            <div className="add-module">
 
-                <Form.Group controlId="nom">
-                    <Form.Control
-                        key="Nom"
-                        type="text"
-                        placeholder="Nom"
-                        onChange={(event) => {
-                            setNom(event.target.value);
-                        }}
-                    />
-                </Form.Group>
+                <h1 className="title">Ajoutez des modules</h1>
 
-                <Form.Group controlId="semestre">
-                    <Form.Control
-                        key="semestre"
-                        type="text"
-                        placeholder="semestre"
-                        onChange={(event) => {
-                            setSemestre(event.target.value);
-                        }}
-                    />
-                </Form.Group>
+                <div className="container-modules">
+                    <Form.Group controlId="nom">
+                        <Form.Control
+                            key="Nom"
+                            type="text"
+                            placeholder="Nom"
+                            onChange={(event) => {
+                                setNom(event.target.value);
+                            }}
+                        />
+                    </Form.Group>
 
-                <Form.Group controlId="nmbr_ss_modules">
-                    <Form.Control
-                        key="nombreSM"
-                        type="text"
-                        placeholder="Nombre des sous modules"
-                        onChange={(event) => {
-                            setNombreSM(event.target.value);
-                        }}
-                    />
-                </Form.Group>
+                    <Form.Group controlId="semestre">
+                        <Form.Control
+                            key="semestre"
+                            type="text"
+                            placeholder="semestre"
+                            onChange={(event) => {
+                                setSemestre(event.target.value);
+                            }}
+                        />
+                    </Form.Group>
 
-                <Button variant="primary" onClick={createModule}>
-                    Valider
-                </Button>
+                    <Form.Group controlId="nmbr_ss_modules">
+                        <Form.Control
+                            key="nombreSM"
+                            type="text"
+                            placeholder="Nombre des sous modules"
+                            onChange={(event) => {
+                                setNombreSM(event.target.value);
+                            }}
+                        />
+                    </Form.Group>
+
+                    <Button variant="primary" onClick={createModule}>
+                        Valider
+                    </Button>
+
+                </div>
+
+
+                <table className="container">
+                    <thead>
+                        <tr>
+                            <th>Module</th>
+                            <th>Sous modules</th>
+                            <th>Prof</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        {modules.map((modulee) => {
+                            if (id_niveau === modulee.id_niveau) {
+                                return (
+                                    <tr key={modulee.id} className="elems-container">
+                                        <td className="elem">{modulee.nom}</td>
+                                        <td className="elem"></td>
+                                        <td className="elem"></td>
+                                        <td className="list-buttons">
+                                            <ModalDelete
+                                                text={modulee.nom}
+                                                deleteVar={deleteModule}
+                                                value={modulee.id}
+                                            />
+                                            <ModalModule name={modulee.nom} id={modulee.id} />
+                                        </td>
+                                    </tr>
+                                );
+                            }
+                        })}
+                    </tbody>
+                </table>
             </div>
-
         </div>
     )
 }

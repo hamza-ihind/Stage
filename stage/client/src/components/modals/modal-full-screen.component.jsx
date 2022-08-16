@@ -3,7 +3,6 @@ import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 
 import FormFiliere from "../form-filiere/form-filiere.component";
-
 const ModalFullscreen = ({ niv, name, id_niveau }) => {
     const [fullscreen, setFullscreen] = useState(true);
     const [show, setShow] = useState(false);
@@ -27,7 +26,7 @@ const ModalFullscreen = ({ niv, name, id_niveau }) => {
                 </Modal.Header>
 
                 <Modal.Body>
-                    <FormFiliere />
+                    <FormFiliere id_niveau={id_niveau} />
                 </Modal.Body>
             </Modal>
         </>

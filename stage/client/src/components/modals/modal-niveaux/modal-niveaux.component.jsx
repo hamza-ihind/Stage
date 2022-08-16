@@ -37,7 +37,7 @@ function ModalNiveaux({ nomFiliere, id }) {
                 aria-labelledby="example-modal-sizes-title-lg"
             >
                 <Modal.Header closeButton>
-                    <Modal.Title id="example-modal-sizes-title-lg">
+                    <Modal.Title id="example-modal-sizes-title-P">
                         {nomFiliere}
                     </Modal.Title>
                 </Modal.Header>

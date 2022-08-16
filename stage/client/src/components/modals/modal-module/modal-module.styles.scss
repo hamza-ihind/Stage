@@ -1,0 +1,20 @@
+.dialogModule {
+	width: 90%;
+	max-width: none !important;
+}
+
+.contentModule {
+	background-color: rgb(255, 240, 157);
+}
+
+.bodySM {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.container-ss-modules {
+	display: flex;
+	justify-content: space-around;
+	margin: 30px auto;
+}

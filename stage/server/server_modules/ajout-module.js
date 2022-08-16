@@ -4,7 +4,7 @@ const handling = (app, db) => {
 		const nom = req.body.nom;
 		const semestre = req.body.semestre;
 		const nombreSM = req.body.nombreSM;
-
+		const id_niveau = req.body.id_niveau;
 		const sqlInsert =
 			'INSERT INTO modules (nom, semestre, nmbr_ss_modules, id_niveau) VALUES (?,?,?,?)';
 
