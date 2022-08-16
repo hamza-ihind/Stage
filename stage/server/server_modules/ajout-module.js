@@ -3,13 +3,14 @@ const handling = (app, db) => {
 	app.post('/api/insert/module', (req, res) => {
 		const nom = req.body.nom;
 		const semestre = req.body.semestre;
-		const nombreModule = req.body.nombreModule;
+		const nombreSM = req.body.nombreSM;
 
 		const sqlInsert =
-			'INSERT INTO modules (nom, semestre, nmbr_ss_modules) VALUES (?,?,?)';
+			'INSERT INTO modules (nom, semestre, nmbr_ss_modules, id_niveau) VALUES (?,?,?,?)';
 
-		db.query(sqlInsert, [nom, semestre, nombreModule], (err, result) => {
+		db.query(sqlInsert, [nom, semestre, nombreSM, id_niveau], (err, result) => {
 			if (err) {
+				console.log(err);
 				res.send(false);
 			} else {
 				res.send(true);

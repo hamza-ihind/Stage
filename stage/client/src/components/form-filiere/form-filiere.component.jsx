@@ -4,12 +4,13 @@ import { Form, Button } from "react-bootstrap";
 
 import Axios from 'axios'
 
-const FormFiliere = () => {
+const FormFiliere = ({ id_niveau }) => {
 
     // states des informations des modules
     const [nom, setNom] = useState("");
     const [semestre, setSemestre] = useState("");
     const [nombreSM, setNombreSM] = useState("");
+
     const [modules, setModules] = useState([])
 
     const refreshModules = () => {
@@ -26,7 +27,8 @@ const FormFiliere = () => {
         Axios.post("http://localhost:3001/api/insert/module", {
             nom,
             semestre,
-            nombreSM
+            nombreSM,
+            id_niveau,
         }).then((response) => {
             refreshModules();
         });
@@ -81,9 +83,9 @@ const FormFiliere = () => {
                     Valider
                 </Button>
             </div>
+
         </div>
     )
-
 }
 
 export default FormFiliere;

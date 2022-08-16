@@ -4,7 +4,7 @@ import Modal from "react-bootstrap/Modal";
 import Axios from "axios";
 import "./modal-niveaux.styles.scss";
 
-import ModalFullscreen from "../modal-full-screen/modal-full-screen.component";
+import ModalFullscreen from "../modal-full-screen.component";
 
 function ModalNiveaux({ nomFiliere, id }) {
     const [lgShow, setLgShow] = useState(false);
