@@ -5,6 +5,7 @@ import Navigation from './routes/Navigation/navigation.component';
 import PageAdmin from './routes/page-admin/page-admin.component';
 import AjoutProf from './routes/Ajout-prof/ajout-prof.component';
 import AjoutFiliere from './routes/ajout-filiere/ajout-filiere.component';
+import TablesView from './components/tables-view/tables-view.component';
 
 function App() {
 	return (
@@ -13,6 +14,8 @@ function App() {
 				<Route path='/admin' element={<PageAdmin />} />
 				<Route path='/profs' element={<AjoutProf />} />
 				<Route path='/filieres' element={<AjoutFiliere />} />
+				<Route path='/view-infos' element={<TablesView />} />
+				<Route path='/infos' element={<AjoutFiliere />} />
 			</Route>
 		</Routes>
 	);

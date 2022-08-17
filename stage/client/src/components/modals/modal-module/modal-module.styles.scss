@@ -1,20 +1,20 @@
 .dialogModule {
 	width: 90%;
+	height: 90%;
 	max-width: none !important;
+	max-height: none !important;
 }
 
 .contentModule {
-	background-color: rgb(255, 240, 157);
-}
-
-.bodySM {
-	display: flex;
-	justify-content: center;
-	align-items: center;
+	background-color: rgb(172, 172, 172);
 }
 
 .container-ss-modules {
 	display: flex;
 	justify-content: space-around;
-	margin: 30px auto;
+	margin: 70px auto;
+}
+
+.title-ss-module {
+	text-align: center;
 }

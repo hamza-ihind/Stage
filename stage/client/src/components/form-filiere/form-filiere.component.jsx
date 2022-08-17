@@ -96,8 +96,8 @@ const FormFiliere = ({ id_niveau }) => {
                     <thead>
                         <tr>
                             <th>Module</th>
-                            <th>Sous modules</th>
-                            <th>Prof</th>
+                            <th>Semestre</th>
+                            <th>Nombre des sous Modules</th>
                             <th>Actions</th>
                         </tr>
                     </thead>
@@ -108,15 +108,15 @@ const FormFiliere = ({ id_niveau }) => {
                                 return (
                                     <tr key={modulee.id} className="elems-container">
                                         <td className="elem">{modulee.nom}</td>
-                                        <td className="elem"></td>
-                                        <td className="elem"></td>
+                                        <td className="elem">{modulee.semestre}</td>
+                                        <td className="elem">{modulee.nmbr_ss_modules}</td>
                                         <td className="list-buttons">
                                             <ModalDelete
                                                 text={modulee.nom}
                                                 deleteVar={deleteModule}
                                                 value={modulee.id}
                                             />
-                                            <ModalModule name={modulee.nom} id={modulee.id} />
+                                            <ModalModule name={modulee.nom} id_module={modulee.id} />
                                         </td>
                                     </tr>
                                 );

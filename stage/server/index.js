@@ -14,6 +14,7 @@ const addProf = require('./server_modules/ajout-prof.js');
 const addFiliere = require('./server_modules/ajout-filiere.js');
 const niveaux = require('./server_modules/niveaux.js');
 const modules = require('./server_modules/ajout-module.js');
+const ssmodules = require('./server_modules/ajout-ss-module.js');
 
 const db = mysql.createPool({
 	user: dbconfig.USER,
@@ -30,3 +31,4 @@ addProf.handling(app, db);
 addFiliere.handling(app, db);
 niveaux.handling(app, db);
 modules.handling(app, db);
+ssmodules.handling(app, db);

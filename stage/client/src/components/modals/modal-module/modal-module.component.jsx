@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { Button, Form } from 'react-bootstrap';
 import Modal from 'react-bootstrap/Modal';
 
+import ModalDelete from '../modal-delete.component';
+
 import Axios from 'axios'
 import './modal-module.styles.scss'
 
@@ -38,11 +40,11 @@ const ModalModule = ({ name, id_module }) => {
         });
     };
 
-    // const deleteSousModule = (id) => {
-    //     Axios.post("http://localhost:3001/api/delete/ss_module", { id }).then(() => {
-    //         refreshSousModules();
-    //     });
-    // };
+    const deleteSousModule = (id) => {
+        Axios.post("http://localhost:3001/api/delete/ss_module", { id }).then(() => {
+            refreshSousModules();
+        });
+    };
 
     return (
         <>
@@ -57,9 +59,9 @@ const ModalModule = ({ name, id_module }) => {
                 </Modal.Header>
 
 
-                <Modal.Body ClassName="bodySM">
+                <Modal.Body>
 
-                    <h1>Ajouter des sous modules</h1>
+                    <h1 className='title-ss-module'>Ajouter des sous modules</h1>
 
                     <div className="container-ss-modules">
 
@@ -90,14 +92,43 @@ const ModalModule = ({ name, id_module }) => {
                         </Button>
                     </div>
 
+                    <table className="container">
+                        <thead>
+                            <tr>
+                                <th>Sous Module</th>
+                                <th>Nombre des Semaines</th>
+                                <th>Prof</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            {sousModules.map((sousModule) => {
+                                if (id_module === sousModule.id_module) {
+                                    return (
+                                        <tr key={sousModule.id} className="elems-container">
+                                            <td className="elem">{sousModule.nom}</td>
+                                            <td className="elem">{sousModule.nmbr_semaines}</td>
+                                            <td className="elem"></td>
+                                            <td className="list-buttons">
+                                                <ModalDelete
+                                                    text={sousModule.nom}
+                                                    deleteVar={deleteSousModule}
+                                                    value={sousModule.id}
+                                                />
+                                            </td>
+                                        </tr>
+                                    );
+                                }
+                            })}
+                        </tbody>
+                    </table>
+
                 </Modal.Body>
 
                 <Modal.Footer>
-                    <Button variant="secondary" onClick={handleClose}>
-                        Fermer
-                    </Button>
                     <Button variant="primary" onClick={handleClose}>
-                        Savegarder
+                        terminer
                     </Button>
                 </Modal.Footer>
 
