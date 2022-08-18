@@ -20,7 +20,7 @@ const ModalDelete = ({ text, deleteVar, value }) => {
         Supprimer
       </Button>
 
-      <Modal show={show} onHide={handleClose}>
+      <Modal style={{ color: 'black' }} show={show} onHide={handleClose}>
 
         <Modal.Header closeButton>
           <Modal.Title>T'es sur ?</Modal.Title>

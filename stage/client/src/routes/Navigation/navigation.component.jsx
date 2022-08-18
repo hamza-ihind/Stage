@@ -1,5 +1,5 @@
 import { Outlet, Link } from 'react-router-dom'
-import { ReactComponent as Logo } from '../../assets/Logo.svg'
+import Logo from '../../assets/Logo.png';
 import { Fragment } from "react"
 
 import './navigation.styles.scss'
@@ -9,7 +9,7 @@ const Navigation = () => {
         <Fragment>
             <div className="navigation">
                 <Link className='logo-container' to='/'>
-                    <Logo className='logo' />
+                    <img className='logo' src={Logo} alt="logo" />
                 </Link>
                 <div className='nav-links-container'>
                     <Link className='nav-link' to='/auth'>

@@ -31,6 +31,7 @@ function ModalNiveaux({ nomFiliere, id }) {
             <Button onClick={() => setLgShow(true)}>Plus de details</Button>
 
             <Modal
+                style={{ color: 'black' }}
                 size="lg"
                 show={lgShow}
                 onHide={() => setLgShow(false)}

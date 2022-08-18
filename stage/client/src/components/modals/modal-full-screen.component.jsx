@@ -18,7 +18,7 @@ const ModalFullscreen = ({ niv, name, id_niveau }) => {
                 Niveau {niv}
             </Button>
 
-            <Modal show={show} fullscreen={fullscreen} onHide={() => setShow(false)}>
+            <Modal style={{ color: 'black' }} show={show} fullscreen={fullscreen} onHide={() => setShow(false)}>
                 <Modal.Header closeButton>
                     <Modal.Title>
                         Niveau {niv}: {name}

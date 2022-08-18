@@ -15,7 +15,7 @@ const ModalError = ({ text1, text2 }) => {
                 Delete
             </Button>
 
-            <Modal show={show} onHide={handleClose}>
+            <Modal style={{ color: 'black' }} show={show} onHide={handleClose}>
                 <Modal.Header closeButton>
                     <Modal.Title>{text1}</Modal.Title>
                 </Modal.Header>

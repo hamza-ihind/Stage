@@ -53,7 +53,7 @@ const AjoutProf = () => {
 
     // the UI
     return (
-        <div>
+        <div className="container-prof">
             <h1 className="title">Ajoutez un prof</h1>
 
             <div className="add-prof">

@@ -6,11 +6,13 @@ import PageAdmin from './routes/page-admin/page-admin.component';
 import AjoutProf from './routes/Ajout-prof/ajout-prof.component';
 import AjoutFiliere from './routes/ajout-filiere/ajout-filiere.component';
 import TablesView from './components/tables-view/tables-view.component';
+import Home from './routes/home/home.component';
 
 function App() {
 	return (
 		<Routes>
 			<Route path='/' element={<Navigation />}>
+				<Route index element={<Home />} />
 				<Route path='/admin' element={<PageAdmin />} />
 				<Route path='/profs' element={<AjoutProf />} />
 				<Route path='/filieres' element={<AjoutFiliere />} />
