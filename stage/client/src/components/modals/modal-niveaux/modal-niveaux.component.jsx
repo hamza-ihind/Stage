@@ -3,8 +3,10 @@ import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import Axios from "axios";
 import "./modal-niveaux.styles.scss";
+import { Link } from 'react-router-dom'
 
-import ModalFullscreen from "../modal-full-screen.component";
+
+// import FormFiliere from "../../form-filiere/form-filiere.component";
 
 function ModalNiveaux({ nomFiliere, id }) {
     const [lgShow, setLgShow] = useState(false);
@@ -29,7 +31,6 @@ function ModalNiveaux({ nomFiliere, id }) {
     return (
         <>
             <Button onClick={() => setLgShow(true)}>Plus de details</Button>
-
             <Modal
                 style={{ color: 'black' }}
                 size="lg"
@@ -47,11 +48,11 @@ function ModalNiveaux({ nomFiliere, id }) {
                     <div className="niveaux-buttons gap-2">
                         {niveaux.map((niveau) => {
                             return (
-                                <ModalFullscreen
-                                    niv={niveau.ordonnancement}
-                                    name={nomFiliere}
-                                    id_niveau={niveau.id}
-                                />
+                                <Link to='/modules'>
+                                    <Button variant="dark">
+                                        niveau: {niveau.ordonnancement}
+                                    </Button>
+                                </Link>
                             );
                         })}
                     </div>

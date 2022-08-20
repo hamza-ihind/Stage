@@ -9,7 +9,7 @@ import './form-filiere.styles.scss'
 import ModalDelete from "../modals/modal-delete.component";
 import ModalModule from "../modals/modal-module/modal-module.component";
 
-const FormFiliere = ({ id_niveau }) => {
+const FormFiliere = ({ id_niveau, name, niv }) => {
 
     // states des informations des modules
     const [nom, setNom] = useState("");
@@ -49,7 +49,7 @@ const FormFiliere = ({ id_niveau }) => {
 
             <div className="add-module">
 
-                <h1 className="title">Ajoutez des modules</h1>
+                <h1 className="title">{name}: {niv}</h1>
 
                 <div className="container-modules">
                     <Form.Group controlId="nom">
