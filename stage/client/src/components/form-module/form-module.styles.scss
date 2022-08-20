@@ -1,0 +1,20 @@
+.form-module {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+	font-size: larger;
+
+	.form-module-group {
+		width: 40%;
+
+		.mb-3 {
+			margin-bottom: 3rem !important;
+		}
+	}
+
+	.checks {
+		display: flex;
+		justify-content: space-evenly;
+	}
+}

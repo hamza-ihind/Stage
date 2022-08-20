@@ -1,22 +1,17 @@
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 
-import { Form, Button } from "react-bootstrap";
-import { useParams } from "react-router-dom";
+import { Button } from "react-bootstrap";
 
 import Axios from 'axios'
 import './form-filiere.styles.scss'
 
 import ModalDelete from "../modals/modal-delete.component";
-import ModalModule from "../modals/modal-module/modal-module.component";
 
 const FormFiliere = ({ id_niveau, name, niv }) => {
 
-    const { id_niv } = useParams();
-
     // states des informations des modules
-    const [nom, setNom] = useState("");
-    const [semestre, setSemestre] = useState("");
-    const [nombreSM, setNombreSM] = useState("");
+
     const [modules, setModules] = useState([])
 
     const refreshModules = () => {
@@ -29,17 +24,6 @@ const FormFiliere = ({ id_niveau, name, niv }) => {
         refreshModules();
     }, []);
 
-    const createModule = () => {
-        Axios.post("http://localhost:3001/api/insert/module", {
-            nom,
-            semestre,
-            nombreSM,
-            id_niveau,
-        }).then((response) => {
-            refreshModules();
-        });
-    };
-
     const deleteModule = (id) => {
         Axios.post("http://localhost:3001/api/delete/module", { id }).then(() => {
             refreshModules();
@@ -47,58 +31,18 @@ const FormFiliere = ({ id_niveau, name, niv }) => {
     };
 
     return (
-        <div>
-
-            {console.log(id_niveau)}
-            {console.log(name)}
-            {console.log(niv)}
-
+        <>
             <div className="add-module">
 
-                <h1 className="title">{name}: {niv}</h1>
 
-                <div className="container-modules">
-                    <Form.Group controlId="nom">
-                        <Form.Control
-                            key="Nom"
-                            type="text"
-                            placeholder="Nom"
-                            onChange={(event) => {
-                                setNom(event.target.value);
-                            }}
-                        />
-                    </Form.Group>
-
-                    <Form.Group controlId="semestre">
-                        <Form.Control
-                            key="semestre"
-                            type="text"
-                            placeholder="semestre"
-                            onChange={(event) => {
-                                setSemestre(event.target.value);
-                            }}
-                        />
-                    </Form.Group>
-
-                    <Form.Group controlId="nmbr_ss_modules">
-                        <Form.Control
-                            key="nombreSM"
-                            type="text"
-                            placeholder="Nombre des sous modules"
-                            onChange={(event) => {
-                                setNombreSM(event.target.value);
-                            }}
-                        />
-                    </Form.Group>
-
-                    <Button variant="primary" onClick={createModule}>
-                        Valider
+                <Link to='/form'>
+                    <Button variant="warning" >
+                        Ajouter un Module
                     </Button>
+                </Link>
 
-                </div>
 
-
-                <table className="container">
+                <table className="container table-modules">
                     <thead>
                         <tr>
                             <th>Module</th>
@@ -122,7 +66,6 @@ const FormFiliere = ({ id_niveau, name, niv }) => {
                                                 deleteVar={deleteModule}
                                                 value={modulee.id}
                                             />
-                                            <ModalModule name={modulee.nom} id_module={modulee.id} />
                                         </td>
                                     </tr>
                                 );
@@ -131,7 +74,7 @@ const FormFiliere = ({ id_niveau, name, niv }) => {
                     </tbody>
                 </table>
             </div>
-        </div>
+        </>
     )
 }
 

@@ -8,6 +8,7 @@ import AjoutFiliere from './routes/ajout-filiere/ajout-filiere.component';
 import TablesView from './components/tables-view/tables-view.component';
 import FormFiliere from './components/form-filiere/form-filiere.component';
 import Home from './routes/home/home.component';
+import FormModule from './components/form-module/form-module.component';
 
 function App() {
 	return (
@@ -20,6 +21,7 @@ function App() {
 				<Route path='/view-infos' element={<TablesView />} />
 				<Route path='/infos' element={<AjoutFiliere />} />
 				<Route path='/modules/:name/:id_niveau' element={<FormFiliere />} />
+				<Route path='/form' element={<FormModule />} />
 			</Route>
 		</Routes>
 	);

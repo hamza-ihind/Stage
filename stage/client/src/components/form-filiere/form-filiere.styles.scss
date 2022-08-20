@@ -1,5 +1,11 @@
-.container-modules {
+.add-module {
 	display: flex;
 	justify-content: space-around;
-	margin: 100px;
+	align-items: center;
+	flex-direction: column;
+	margin: 300px 60px;
+
+	.table-modules {
+		margin: 40px;
+	}
 }
