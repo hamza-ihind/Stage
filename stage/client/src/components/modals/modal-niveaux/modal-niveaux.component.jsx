@@ -48,7 +48,7 @@ function ModalNiveaux({ nomFiliere, id }) {
                     <div className="niveaux-buttons gap-2">
                         {niveaux.map((niveau) => {
                             return (
-                                <Link to='/modules'>
+                                <Link to={`/modules/${nomFiliere}/${niveau.id}`}>
                                     <Button variant="dark">
                                         niveau: {niveau.ordonnancement}
                                     </Button>

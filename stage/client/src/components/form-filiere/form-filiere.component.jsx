@@ -1,15 +1,17 @@
 import { useState, useEffect } from "react";
 
 import { Form, Button } from "react-bootstrap";
+import { useParams } from "react-router-dom";
 
 import Axios from 'axios'
-
 import './form-filiere.styles.scss'
 
 import ModalDelete from "../modals/modal-delete.component";
 import ModalModule from "../modals/modal-module/modal-module.component";
 
 const FormFiliere = ({ id_niveau, name, niv }) => {
+
+    const { id_niv } = useParams();
 
     // states des informations des modules
     const [nom, setNom] = useState("");
@@ -46,6 +48,10 @@ const FormFiliere = ({ id_niveau, name, niv }) => {
 
     return (
         <div>
+
+            {console.log(id_niveau)}
+            {console.log(name)}
+            {console.log(niv)}
 
             <div className="add-module">
 

@@ -14,8 +14,8 @@ const handling = (app, db) => {
 				res.send(true);
 				for (let i = 0; i < nombreNiveau; i++) {
 					const query =
-						'INSERT INTO niveaux (id_filiere, ordonnancement, nmbr_modules) VALUES (?,?,?)';
-					db.query(query, [result.insertId, i + 1, 0], (err, res) => {
+						'INSERT INTO niveaux (id_filiere, ordonnancement) VALUES (?,?)';
+					db.query(query, [result.insertId, i + 1], (err, res) => {
 						if (err) console.log(err);
 					});
 				}

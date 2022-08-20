@@ -6,6 +6,7 @@ import PageAdmin from './routes/page-admin/page-admin.component';
 import AjoutProf from './routes/Ajout-prof/ajout-prof.component';
 import AjoutFiliere from './routes/ajout-filiere/ajout-filiere.component';
 import TablesView from './components/tables-view/tables-view.component';
+import FormFiliere from './components/form-filiere/form-filiere.component';
 import Home from './routes/home/home.component';
 
 function App() {
@@ -18,6 +19,7 @@ function App() {
 				<Route path='/filieres' element={<AjoutFiliere />} />
 				<Route path='/view-infos' element={<TablesView />} />
 				<Route path='/infos' element={<AjoutFiliere />} />
+				<Route path='/modules/:name/:id_niveau' element={<FormFiliere />} />
 			</Route>
 		</Routes>
 	);
