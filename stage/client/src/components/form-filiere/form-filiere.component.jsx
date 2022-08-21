@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useParams } from "react-router-dom";
 
 import { Button } from "react-bootstrap";
 
@@ -9,6 +9,13 @@ import './form-filiere.styles.scss'
 import ModalDelete from "../modals/modal-delete.component";
 
 const FormFiliere = () => {
+
+    const { id } = useParams();
+    const location = useLocation();
+
+    const nomFiliere = location.state.nomFiliere
+    const id_niveau = location.state.id_niveau
+
 
     // states des informations des modules
 
@@ -34,8 +41,9 @@ const FormFiliere = () => {
         <>
             <div className="add-module">
 
+                <h1>{nomFiliere} {id}</h1>
 
-                <Link to='/form'>
+                <Link to='/form' state={{ nomFiliere }}>
                     <Button variant="warning" >
                         Ajouter un Module
                     </Button>

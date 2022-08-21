@@ -11,6 +11,11 @@ function ModalNiveaux({ nomFiliere, id }) {
     const [lgShow, setLgShow] = useState(false);
     const [niveaux, setNiveaux] = useState([]);
 
+    const PropsNivs = {
+        nomFiliere,
+        id
+    }
+
     const id_filiere = id;
 
     // Backend Stuff
@@ -46,7 +51,7 @@ function ModalNiveaux({ nomFiliere, id }) {
                     <div className="niveaux-buttons gap-2">
                         {niveaux.map((niveau) => {
                             return (
-                                <Link key={niveau.ordonnancement} to={`/modules/${nomFiliere}${niveau.ordonnancement}`}>
+                                <Link key={niveau.ordonnancement} to={`/modules/${nomFiliere}${niveau.ordonnancement}`} state={PropsNivs}>
                                     <Button
                                         variant="dark"
                                         onClick={() => {

@@ -37,7 +37,9 @@ const handling = (app, db) => {
 	});
 
 	app.put('/api/update/prof', (req, res) => {
+		const id = req.body.id;
 		const password = req.body.password;
+
 		const sqlUpdate = 'UPDATE profs SET password = ? where matricule = ?';
 
 		db.query(sqlUpdate, [password, id], (err, result) => {

@@ -1,14 +1,22 @@
 import { Form, Button } from "react-bootstrap"
 import { useState } from 'react'
 import './form-module.styles.scss'
+import { useLocation } from "react-router-dom"
 
 import AjoutSsModule from "../Ajout-ss-module/ajout-ss-module.component"
 
 const FormModule = () => {
 
+    // props
+    const location = useLocation()
+    const nomFiliere = location.state.nomFiliere
+
+    // states affichage
     const [showOui, setShowOui] = useState(false)
     const [showNon, setShowNon] = useState(false)
 
+    //states de module
+    const [nomModule, setNomModule] = useState('')
 
     // functions for radio cases
     const theOui = () => {
@@ -23,7 +31,7 @@ const FormModule = () => {
     return (
         <>
             <div className="form-module">
-                <h1>Ajouter les modules de </h1>
+                <h1>Modules de {nomFiliere}</h1>
 
                 <Form class="form-module-group">
                     <Form.Group className="mb-3" controlId="nom">
@@ -71,8 +79,8 @@ const FormModule = () => {
                 </Form>
 
                 {showOui && <div>hamza</div>}
-
                 {showNon && <AjoutSsModule />}
+
             </div>
         </>
     )

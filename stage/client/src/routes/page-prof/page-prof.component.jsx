@@ -9,7 +9,9 @@ import './page-prof.styles.scss'
 const PageProf = () => {
 
     const location = useLocation()
-    console.log(location.state.id)
+
+    const id = location.state.id
+    const nom = location.state.nom
 
     return (
 
@@ -23,7 +25,7 @@ const PageProf = () => {
                 </h2>
             </div>
             <div className="password-change">
-                <PasswordChange />
+                <PasswordChange id={id} />
             </div>
         </div>
     )

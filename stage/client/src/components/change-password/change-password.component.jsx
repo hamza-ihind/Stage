@@ -5,14 +5,16 @@ import Axios from 'axios'
 
 import './change-password.styles.scss'
 
-const PasswordChange = () => {
+const PasswordChange = ({ id }) => {
 
     const [show, setShow] = useState(false)
     const [newPassword, setNewPassword] = useState('')
 
-    const updatePassword = (id) => {
+    const id_prof = id
+
+    const updatePassword = (id_prof) => {
         Axios.put("http://localhost:3001/api/update/prof", {
-            id,
+            id_prof,
             newPassword
         })
         setNewPassword("")
@@ -20,6 +22,7 @@ const PasswordChange = () => {
 
     return (
         <div className="password-change">
+
             <Button variant="dark" className="btn-change-password" onClick={() => setShow(!show)}>
                 Changer votre mot de passe ?
             </Button>
@@ -31,7 +34,7 @@ const PasswordChange = () => {
                     <Form.Control type="password" placeholder="Mot de passe" onChange={(e) => setNewPassword(e.target.value)} />
                 </Form.Group>
 
-                <Button variant="success" onClick={updatePassword}>
+                <Button variant="success" onClick={() => updatePassword(id_prof)}>
                     Enregistrer
                 </Button>
 

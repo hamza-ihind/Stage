@@ -9,18 +9,14 @@ const handling = (app, db) => {
 		const sqlInsert =
 			'INSERT INTO sous_modules (nom, nmbr_semaines, id_module, id_prof) VALUES (?,?,?,?)';
 
-		db.query(
-			sqlInsert,
-			[nom, nombreSemaines, id_module, id_prof],
-			(err, result) => {
-				if (err) {
-					console.log(err);
-					res.send(false);
-				} else {
-					res.send(true);
-				}
-			},
-		);
+		db.query(sqlInsert, [nom, nombreSemaines, 0, 0], (err, result) => {
+			if (err) {
+				console.log(err);
+				res.send(false);
+			} else {
+				res.send(true);
+			}
+		});
 	});
 
 	// Afficher
