@@ -35,6 +35,15 @@ const handling = (app, db) => {
 			}
 		});
 	});
+
+	app.put('/api/update/prof', (req, res) => {
+		const password = req.body.password;
+		const sqlUpdate = 'UPDATE profs SET password = ? where matricule = ?';
+
+		db.query(sqlUpdate, [password, id], (err, result) => {
+			if (err) console.log(err);
+		});
+	});
 };
 module.exports = {
 	handling,

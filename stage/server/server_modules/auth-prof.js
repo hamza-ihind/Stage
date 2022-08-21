@@ -9,7 +9,6 @@ const handling = (app, db) => {
 			(err, result) => {
 				if (err) console.log(err);
 				if (result) res.send(result);
-				else res.send({ message: "n'existe pas" });
 			},
 		);
 	});

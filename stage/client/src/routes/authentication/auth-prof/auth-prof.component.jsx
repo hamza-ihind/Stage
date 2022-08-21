@@ -20,11 +20,12 @@ const AuthProf = () => {
             nom,
             password
         }).then((response) => {
-            if (response.data.message) {
-                setLoginStatus(response.data.message)
-            } else {
-                setLoginStatus('');
-                navigate("./page-prof")
+            if (response.data.length) {
+                setLoginStatus('')
+                navigate(`/page-prof/${nom}`)
+            }
+            else {
+                setLoginStatus('Le prof n\'existe pas dans la base des données')
             }
         })
     }
@@ -52,8 +53,6 @@ const AuthProf = () => {
                 </Button>
 
             </Form>
-
-
         </div>
     )
 }
