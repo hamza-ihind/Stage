@@ -2,18 +2,24 @@ import { useState } from 'react'
 
 import { Form, Button } from 'react-bootstrap'
 
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, useLocation } from 'react-router-dom'
 
 import Axios from 'axios'
 import './auth-prof.styles.scss'
 
 const AuthProf = () => {
 
+    let location = useLocation();
     let navigate = useNavigate();
 
     const [nom, setNom] = useState('')
     const [password, setPassword] = useState('')
     const [loginStatus, setLoginStatus] = useState('')
+
+    const propsProf = {
+        nom,
+        id: password
+    }
 
     const login = () => {
         Axios.post('http://localhost:3001/api/login', {
@@ -22,7 +28,7 @@ const AuthProf = () => {
         }).then((response) => {
             if (response.data.length) {
                 setLoginStatus('')
-                navigate(`/page-prof/${nom}`)
+                navigate(`/page-prof/${nom}`, { state: propsProf })
             }
             else {
                 setLoginStatus('Le prof n\'existe pas dans la base des données')
