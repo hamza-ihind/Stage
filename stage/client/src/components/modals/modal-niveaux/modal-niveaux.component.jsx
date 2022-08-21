@@ -3,8 +3,7 @@ import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import Axios from "axios";
 import "./modal-niveaux.styles.scss";
-import { Link } from 'react-router-dom'
-
+import { Link } from "react-router-dom";
 
 // import FormFiliere from "../../form-filiere/form-filiere.component";
 
@@ -12,7 +11,6 @@ function ModalNiveaux({ nomFiliere, id }) {
     const [lgShow, setLgShow] = useState(false);
     const [niveaux, setNiveaux] = useState([]);
 
-    // Quelques fonctions
     const id_filiere = id;
 
     // Backend Stuff
@@ -26,13 +24,13 @@ function ModalNiveaux({ nomFiliere, id }) {
 
     useEffect(() => {
         refreshNiveaux(id_filiere);
-    }, []);
+    }, [id_filiere]);
 
     return (
         <>
             <Button onClick={() => setLgShow(true)}>Plus de details</Button>
             <Modal
-                style={{ color: 'black' }}
+                style={{ color: "black" }}
                 size="lg"
                 show={lgShow}
                 onHide={() => setLgShow(false)}
@@ -48,8 +46,15 @@ function ModalNiveaux({ nomFiliere, id }) {
                     <div className="niveaux-buttons gap-2">
                         {niveaux.map((niveau) => {
                             return (
-                                <Link to={`/modules/${nomFiliere}/${niveau.id}`}>
-                                    <Button variant="dark">
+                                <Link key={niveau.ordonnancement} to={`/modules/${nomFiliere}${niveau.ordonnancement}`}>
+                                    <Button
+                                        variant="dark"
+                                        onClick={() => {
+                                            Axios.post("http://localhost:3001/api/data", {
+                                                currentIdNiveau: niveau.id,
+                                            });
+                                        }}
+                                    >
                                         niveau: {niveau.ordonnancement}
                                     </Button>
                                 </Link>

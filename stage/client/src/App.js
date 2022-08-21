@@ -20,7 +20,7 @@ function App() {
 				<Route path='/filieres' element={<AjoutFiliere />} />
 				<Route path='/view-infos' element={<TablesView />} />
 				<Route path='/infos' element={<AjoutFiliere />} />
-				<Route path='/modules/:name/:id_niveau' element={<FormFiliere />} />
+				<Route path='/modules/:name:id' element={<FormFiliere />} />
 				<Route path='/form' element={<FormModule />} />
 			</Route>
 		</Routes>

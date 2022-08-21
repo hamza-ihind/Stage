@@ -10,6 +10,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cors());
 app.use(express.json());
 
+const data = {};
 const addProf = require('./server_modules/ajout-prof.js');
 const addFiliere = require('./server_modules/ajout-filiere.js');
 const niveaux = require('./server_modules/niveaux.js');
@@ -21,6 +22,13 @@ const db = mysql.createPool({
 	host: dbconfig.HOST,
 	password: dbconfig.PASSWORD,
 	database: 'timetable_db',
+});
+
+app.post('/api/data', (req, res) => {
+	Object.assign(data, req.body);
+});
+app.get('/api/data', (req, res) => {
+	res.send(data);
 });
 
 app.listen(3001, () => {

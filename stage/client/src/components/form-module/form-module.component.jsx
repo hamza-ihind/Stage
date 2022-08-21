@@ -1,12 +1,30 @@
 import { Form, Button } from "react-bootstrap"
+import { useState } from 'react'
 import './form-module.styles.scss'
 
+import AjoutSsModule from "../Ajout-ss-module/ajout-ss-module.component"
+
 const FormModule = () => {
+
+    const [showOui, setShowOui] = useState(false)
+    const [showNon, setShowNon] = useState(false)
+
+
+    // functions for radio cases
+    const theOui = () => {
+        setShowOui(true)
+        setShowNon(false)
+    }
+    const theNon = () => {
+        setShowOui(false)
+        setShowNon(true)
+    }
 
     return (
         <>
             <div className="form-module">
                 <h1>Ajouter les modules de </h1>
+
                 <Form class="form-module-group">
                     <Form.Group className="mb-3" controlId="nom">
                         <Form.Label>Nom</Form.Label>
@@ -35,12 +53,14 @@ const FormModule = () => {
                         <Form.Label>Est-ce que ce module a des sous modules ?</Form.Label>
                         <div className="checks">
                             <Form.Check
+                                onChange={theOui}
                                 name='sm'
                                 type='radio'
                                 label='Oui'
                                 id='radioCheck'
                             />
                             <Form.Check
+                                onChange={theNon}
                                 name="sm"
                                 type='radio'
                                 label='Non'
@@ -50,7 +70,9 @@ const FormModule = () => {
                     </Form.Group>
                 </Form>
 
+                {showOui && <div>hamza</div>}
 
+                {showNon && <AjoutSsModule />}
             </div>
         </>
     )

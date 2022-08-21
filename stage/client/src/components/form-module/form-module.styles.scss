@@ -17,4 +17,16 @@
 		display: flex;
 		justify-content: space-evenly;
 	}
+
+	.oui-choice {
+		display: flex;
+		align-items: center;
+		flex-direction: column;
+
+		.add-sous-module {
+			display: flex;
+			flex-direction: row;
+			gap: 50px;
+		}
+	}
 }

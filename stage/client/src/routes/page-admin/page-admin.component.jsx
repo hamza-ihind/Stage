@@ -10,25 +10,25 @@ const PageAdmin = () => {
 
             <div className="links-container">
                 <Link className="link" to="/infos" >
-                    <Button variant='primary' size='lg'>
+                    <Button variant='warning' size='lg'>
                         Ajouter des infos
                     </Button>
                 </Link>
 
                 <Link className="link" to="/profs" >
-                    <Button variant='primary' size='lg'>
+                    <Button variant='warning' size='lg'>
                         Ajouter un prof
                     </Button>
                 </Link>
 
                 <Link className="link" to="/filieres" >
-                    <Button variant='primary' size='lg'>
+                    <Button variant='warning' size='lg'>
                         Ajouter des filieres
                     </Button>
                 </Link>
 
                 <Link className="link" to="/view-infos" >
-                    <Button variant='primary' size='lg'>
+                    <Button variant='warning' size='lg'>
                         Voir des infos
                     </Button>
                 </Link>
