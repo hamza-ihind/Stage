@@ -1,0 +1,18 @@
+.auth-prof {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+
+	margin-top: 150px;
+
+	.form-prof {
+		font-size: medium;
+		display: flex;
+		justify-content: center;
+		flex-direction: column;
+		gap: 20px;
+		margin-top: 50px;
+		width: 20% !important;
+	}
+}

@@ -4,18 +4,23 @@ const handling = (app, db) => {
 		const nom = req.body.nom;
 		const nombreSemaines = req.body.nombreSemaines;
 		const id_module = req.body.id_module;
+		const id_prof = req.body.id_prof;
 
 		const sqlInsert =
-			'INSERT INTO sous_modules (nom, nmbr_semaines, id_module) VALUES (?,?,?)';
+			'INSERT INTO sous_modules (nom, nmbr_semaines, id_module, id_prof) VALUES (?,?,?,?)';
 
-		db.query(sqlInsert, [nom, nombreSemaines, id_module], (err, result) => {
-			if (err) {
-				console.log(err);
-				res.send(false);
-			} else {
-				res.send(true);
-			}
-		});
+		db.query(
+			sqlInsert,
+			[nom, nombreSemaines, id_module, id_prof],
+			(err, result) => {
+				if (err) {
+					console.log(err);
+					res.send(false);
+				} else {
+					res.send(true);
+				}
+			},
+		);
 	});
 
 	// Afficher

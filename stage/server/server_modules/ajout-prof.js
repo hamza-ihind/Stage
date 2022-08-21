@@ -4,7 +4,8 @@ const handling = (app, db) => {
 		const nom = req.body.nom;
 		const email = req.body.email;
 
-		const sqlInsert = 'INSERT INTO profs (matricule, nom, email) VALUES (?,?,?)';
+		const sqlInsert =
+			'INSERT INTO profs (matricule, nom, email, password) VALUES (?,?,?, matricule)';
 
 		db.query(sqlInsert, [matricule, nom, email], (err, result) => {
 			if (err) {

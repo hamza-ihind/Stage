@@ -8,7 +8,7 @@ import './form-filiere.styles.scss'
 
 import ModalDelete from "../modals/modal-delete.component";
 
-const FormFiliere = ({ id_niveau, name, niv }) => {
+const FormFiliere = () => {
 
     // states des informations des modules
 
@@ -54,22 +54,20 @@ const FormFiliere = ({ id_niveau, name, niv }) => {
 
                     <tbody>
                         {modules.map((modulee) => {
-                            if (id_niveau === modulee.id_niveau) {
-                                return (
-                                    <tr key={modulee.id} className="elems-container">
-                                        <td className="elem">{modulee.nom}</td>
-                                        <td className="elem">{modulee.semestre}</td>
-                                        <td className="elem">{modulee.nmbr_ss_modules}</td>
-                                        <td className="list-buttons">
-                                            <ModalDelete
-                                                text={modulee.nom}
-                                                deleteVar={deleteModule}
-                                                value={modulee.id}
-                                            />
-                                        </td>
-                                    </tr>
-                                );
-                            }
+                            return (
+                                <tr key={modulee.id} className="elems-container">
+                                    <td className="elem">{modulee.nom}</td>
+                                    <td className="elem">{modulee.semestre}</td>
+                                    <td className="elem">{modulee.nmbr_ss_modules}</td>
+                                    <td className="list-buttons">
+                                        <ModalDelete
+                                            text={modulee.nom}
+                                            deleteVar={deleteModule}
+                                            value={modulee.id}
+                                        />
+                                    </td>
+                                </tr>
+                            );
                         })}
                     </tbody>
                 </table>

@@ -9,6 +9,7 @@ import TablesView from './components/tables-view/tables-view.component';
 import FormFiliere from './components/form-filiere/form-filiere.component';
 import Home from './routes/home/home.component';
 import FormModule from './components/form-module/form-module.component';
+import AuthProf from './routes/authentication/auth-prof/auth-prof.component';
 
 function App() {
 	return (
@@ -22,6 +23,7 @@ function App() {
 				<Route path='/infos' element={<AjoutFiliere />} />
 				<Route path='/modules/:name:id' element={<FormFiliere />} />
 				<Route path='/form' element={<FormModule />} />
+				<Route path='/auth-prof' element={<AuthProf />} />
 			</Route>
 		</Routes>
 	);
