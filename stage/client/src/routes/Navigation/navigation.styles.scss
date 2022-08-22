@@ -1,15 +1,15 @@
 .navigation {
-	height: 80px;
-	padding: 50px 40px 45px 50px;
+	height: 70px;
 	width: 100%;
+	padding: 40px;
 	margin-bottom: 50px;
 	display: flex;
-	justify-content: space-between;
+	justify-content: space-around;
 	top: 0;
 	position: fixed;
 	z-index: 100;
-	background-color: rgba($color: rgb(255, 255, 255), $alpha: 0.5);
-	color: black;
+	color: white;
+	transition: 0.4s;
 
 	.nav-links-container {
 		width: 50%;
@@ -17,7 +17,7 @@
 		display: flex;
 		align-items: center;
 		justify-content: flex-end;
-		font-size: 1.2rem;
+		font-size: 1.1rem;
 
 		.nav-link {
 			padding: 10px 15px;
@@ -32,6 +32,11 @@
 	}
 
 	.logo {
-		height: 50px;
+		height: 40px;
 	}
+}
+
+.active {
+	background-color: rgba(40, 3, 82, 0.95);
+	transition: 0.4s;
 }

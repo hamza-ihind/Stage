@@ -1,13 +1,26 @@
+import { useState } from 'react';
 import { Outlet, Link } from 'react-router-dom'
 import Logo from '../../assets/Logo.png';
-import { Fragment } from "react"
 
 import './navigation.styles.scss'
 
 const Navigation = () => {
+
+    const [navBar, setNavBar] = useState(false)
+
+    const changeBg = () => {
+        if (window.scrollY >= 70) {
+            setNavBar(true)
+        } else {
+            setNavBar(false)
+        }
+    }
+
+    window.addEventListener('scroll', changeBg)
+
     return (
-        <Fragment>
-            <div className="navigation">
+        <>
+            <div className={navBar ? 'navigation active' : ' navigation'}>
                 <Link className='logo-container' to='/'>
                     <img className='logo' src={Logo} alt="logo" />
                 </Link>
@@ -21,7 +34,7 @@ const Navigation = () => {
                 </div>
             </div>
             <Outlet />
-        </Fragment>
+        </>
     )
 }
 

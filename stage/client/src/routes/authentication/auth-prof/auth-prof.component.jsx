@@ -44,17 +44,17 @@ const AuthProf = () => {
 
             <Form className='form-prof'>
 
-                <Form.Group className="mb-3" controlId="nom">
+                <Form.Group className="mb-4" controlId="nom">
                     <Form.Label>Nom Complet</Form.Label>
                     <Form.Control type="text" placeholder="Nom" onChange={(e) => { setNom(e.target.value) }} />
                 </Form.Group>
 
-                <Form.Group className="mb-3" controlId="password">
+                <Form.Group className="mb-4" controlId="password">
                     <Form.Label>Mot de Passe</Form.Label>
                     <Form.Control type="password" placeholder="password" onChange={(e) => { setPassword(e.target.value) }} />
                 </Form.Group>
 
-                <Button variant="success" onClick={login}>
+                <Button onClick={login} className='btn-auth-prof'>
                     Connecter
                 </Button>
 
