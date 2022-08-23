@@ -1,15 +1,14 @@
 import { Button } from 'react-bootstrap'
+import { Link } from 'react-router-dom'
 
 import Blob from '../../assets/New folder/blob.svg'
 import Blob2 from '../../assets/New folder/blob2.svg'
 import Vect from '../../assets/New folder/vect.svg'
-
 import Admin from "../../assets/icons/admin.png"
-import Teacher from "../../assets/icons/teacher.png"
-
-import { Link } from 'react-router-dom'
-
+import Prof from "../../assets/icons/prof.png"
 import './home.styles.scss'
+
+import EtudiantEmploi from '../../components/etudiant-emploi/etudiant-emploi.component'
 
 const Home = () => (
     <div>
@@ -31,7 +30,7 @@ const Home = () => (
                     </Link>
                     <Link to='/auth-prof'>
                         <Button size='lg' className='button-home'>
-                            <img src={Teacher} alt="prof" className='icon-button' />
+                            <img src={Prof} alt="prof" className='icon-button' />
                             Connection Prof
                         </Button>
                     </Link>
@@ -42,51 +41,19 @@ const Home = () => (
 
         </div>
 
+        <EtudiantEmploi />
+        <EtudiantEmploi />
+        <EtudiantEmploi />
+        <EtudiantEmploi />
+        <EtudiantEmploi />
+        <EtudiantEmploi />
+        <EtudiantEmploi />
+        <EtudiantEmploi />
+        <EtudiantEmploi />
+        <EtudiantEmploi />
+        <EtudiantEmploi />
 
-        <div className='container-emplois-etudiants'>
-            hamza
-        </div>
-        <div className='container-emplois-etudiants'>
-            hamza
-        </div>
-        <div className='container-emplois-etudiants'>
-            hamza
-        </div>
-        <div className='container-emplois-etudiants'>
-            hamza
-        </div>
-        <div className='container-emplois-etudiants'>
-            hamza
-        </div>
-        <div className='container-emplois-etudiants'>
-            hamza
-        </div>
-        <div className='container-emplois-etudiants'>
-            hamza
-        </div>
-        <div className='container-emplois-etudiants'>
-            hamza
-        </div>
-        <div className='container-emplois-etudiants'>
-            hamza
-        </div>
-        <div className='container-emplois-etudiants'>
-            hamza
-        </div>
-        <div className='container-emplois-etudiants'>
-            hamza
-        </div>
-        <div className='container-emplois-etudiants'>
-            hamza
-        </div>
-        <div className='container-emplois-etudiants'>
-            hamza
-        </div>
-        <div className='container-emplois-etudiants'>
-            hamza
-        </div>
-
-    </div>
+    </div >
 )
 
 export default Home;

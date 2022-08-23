@@ -16,15 +16,15 @@ function App() {
 	return (
 		<Routes>
 			<Route path='/' element={<Navigation />}>
-				<Route index element={<Home />} />
 				<Route path='/admin' element={<PageAdmin />} />
 				<Route path='/profs' element={<AjoutProf />} />
-				<Route path='/filieres' element={<AjoutFiliere />} />
 				<Route path='/view-infos' element={<TablesView />} />
 				<Route path='/infos' element={<AjoutFiliere />} />
 				<Route path='/modules/:name:id' element={<FormFiliere />} />
 				<Route path='/form' element={<FormModule />} />
 				<Route path='/auth-prof' element={<AuthProf />} />
+				<Route index element={<Home />} />
+				<Route path='/filieres' element={<AjoutFiliere />} />
 				<Route path='/page-prof/:nom' element={<PageProf />} />
 			</Route>
 		</Routes>

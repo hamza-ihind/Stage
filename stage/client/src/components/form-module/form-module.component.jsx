@@ -78,11 +78,17 @@ const FormModule = () => {
                     </Form.Group>
                 </Form>
 
-                {showOui && <div>hamza</div>}
+                {showOui && <ParamModule />}
                 {showNon && <AjoutSsModule />}
 
             </div>
         </>
+    )
+}
+
+const ParamModule = () => {
+    return (
+        <div> Hamza ihind </div>
     )
 }
 

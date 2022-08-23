@@ -2,11 +2,33 @@
 	display: flex;
 	justify-content: center;
 	flex-direction: column;
-	padding: 50px;
+	padding: 40px;
 
 	.links-container {
 		display: flex;
-		justify-content: space-around;
-		margin-top: 200px;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		margin-top: 70px;
+	}
+
+	.link {
+		display: flex;
+		margin-bottom: 40px;
+		height: 70px;
+		width: 350px;
+		color: white;
+		justify-content: space-evenly;
+		align-items: center;
+		border-radius: 50px;
+		border: none;
+		background-color: rgb(64, 1, 116);
+		&:hover {
+			background-color: rgb(40, 7, 68);
+		}
+
+		.icon-button-admin {
+			height: 30px;
+		}
 	}
 }
