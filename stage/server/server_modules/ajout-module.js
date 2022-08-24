@@ -6,13 +6,13 @@ const handling = (app, db) => {
 		const nombreSM = 0;
 		const id_niveau = req.body.idniveau;
 		const id_prof = req.body.prof;
-		const nmbr_semaines = req.body.nmbr_semaines;
+		// const nmbr_semaines = req.body.nmbr_semaines;
 		const sqlInsert =
-			'INSERT INTO modules (nom, semestre, nmbr_ss_modules, id_niveau,id_prof,nmbr_semaines) VALUES (?,?,?,?,?,?)';
+			'INSERT INTO modules (nom, semestre, nmbr_ss_modules, id_niveau, id_prof, nmbr_semaines) VALUES (?,?,?,?,?,?)';
 
 		db.query(
 			sqlInsert,
-			[nom, semestre, nombreSM, id_niveau, id_prof, nmbr_semaines],
+			[nom, semestre, nombreSM, id_niveau, id_prof, 0],
 			(err, result) => {
 				if (err) {
 					console.log(err);
