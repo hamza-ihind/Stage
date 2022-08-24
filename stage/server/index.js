@@ -19,6 +19,7 @@ const niveaux = require('./server_modules/niveaux.js');
 const modules = require('./server_modules/ajout-module.js');
 const ssmodules = require('./server_modules/ajout-ss-module.js');
 const authProf = require('./server_modules/auth-prof.js');
+const authAdmin = require('./server_modules/auth-admin.js');
 
 const db = mysql.createPool({
 	user: dbconfig.USER,
@@ -45,3 +46,4 @@ niveaux.handling(app, db);
 modules.handling(app, db);
 ssmodules.handling(app, db);
 authProf.handling(app, db);
+authAdmin.handling(app, db);

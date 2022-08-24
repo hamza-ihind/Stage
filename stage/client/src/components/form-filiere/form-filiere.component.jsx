@@ -3,23 +3,21 @@ import { Link, useLocation, useParams } from "react-router-dom";
 
 import { Button } from "react-bootstrap";
 
-import Axios from 'axios'
-import './form-filiere.styles.scss'
+import Axios from "axios";
+import "./form-filiere.styles.scss";
 
 import ModalDelete from "../modals/modal-delete.component";
 
 const FormFiliere = () => {
-
-    const { id } = useParams();
     const location = useLocation();
 
-    const nomFiliere = location.state.nomFiliere
-    const id_niveau = location.state.id_niveau
-
+    const nomFiliere = location.state.nomFiliere;
+    const idniveau = location.state.idniveau;
+    const niveau = location.state.niveau;
 
     // states des informations des modules
 
-    const [modules, setModules] = useState([])
+    const [modules, setModules] = useState([]);
 
     const refreshModules = () => {
         Axios.get("http://localhost:3001/api/get/module").then((response) => {
@@ -40,15 +38,13 @@ const FormFiliere = () => {
     return (
         <>
             <div className="add-module">
+                <h1>
+                    {nomFiliere} {niveau} {"/idniv: " + idniveau}
+                </h1>
 
-                <h1>{nomFiliere} {id}</h1>
-
-                <Link to='/form' state={{ nomFiliere }}>
-                    <Button variant="warning" >
-                        Ajouter un Module
-                    </Button>
+                <Link to="/form" state={{ nomFiliere, idniveau, niveau }}>
+                    <Button variant="warning">Ajouter un Module</Button>
                 </Link>
-
 
                 <table className="container table-modules">
                     <thead>
@@ -81,7 +77,7 @@ const FormFiliere = () => {
                 </table>
             </div>
         </>
-    )
-}
+    );
+};
 
 export default FormFiliere;

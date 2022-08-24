@@ -2,9 +2,13 @@ import { useState } from 'react'
 
 import { Form, Button } from 'react-bootstrap'
 
+import Blob3 from '../../../assets/New folder/blob3.svg'
+import Blob4 from '../../../assets/New folder/blob4.svg'
+
 import { useNavigate, useLocation } from 'react-router-dom'
 
 import Axios from 'axios'
+
 import './auth-prof.styles.scss'
 
 const AuthProf = () => {
@@ -22,7 +26,7 @@ const AuthProf = () => {
     }
 
     const login = () => {
-        Axios.post('http://localhost:3001/api/login', {
+        Axios.post('http://localhost:3001/api/login/prof', {
             nom,
             password
         }).then((response) => {
@@ -41,6 +45,9 @@ const AuthProf = () => {
             <h1>Authetication Professeur</h1>
 
             <p>{loginStatus}</p>
+
+            <img src={Blob3} alt="blob" className='blob-3' />
+            <img src={Blob4} alt="blob" className='blob-4' />
 
             <Form className='form-prof'>
 

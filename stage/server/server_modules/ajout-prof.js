@@ -5,9 +5,9 @@ const handling = (app, db) => {
 		const email = req.body.email;
 
 		const sqlInsert =
-			'INSERT INTO profs (matricule, nom, email, password) VALUES (?,?,?, matricule)';
+			'INSERT INTO profs (matricule, nom, email, password) VALUES (?,?,?, ?)';
 
-		db.query(sqlInsert, [matricule, nom, email], (err, result) => {
+		db.query(sqlInsert, [matricule, nom, email, matricule], (err, result) => {
 			if (err) {
 				res.send(false);
 			} else {
@@ -33,17 +33,6 @@ const handling = (app, db) => {
 			} else {
 				res.send(true);
 			}
-		});
-	});
-
-	app.put('/api/update/prof', (req, res) => {
-		const id = req.body.id;
-		const password = req.body.password;
-
-		const sqlUpdate = 'UPDATE profs SET password = ? where matricule = ?';
-
-		db.query(sqlUpdate, [password, id], (err, result) => {
-			if (err) console.log(err);
 		});
 	});
 };

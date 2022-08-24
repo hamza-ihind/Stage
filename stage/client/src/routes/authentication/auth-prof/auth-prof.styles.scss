@@ -1,9 +1,10 @@
 .auth-prof {
+	position: relative;
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	flex-direction: column;
-
+	max-height: 100vh;
 	margin-top: 150px;
 
 	.form-prof {
@@ -34,5 +35,24 @@
 				background-color: rgb(40, 7, 68);
 			}
 		}
+	}
+
+	.blob-3 {
+		position: absolute;
+		height: 900px;
+		left: -20%;
+		rotate: -70deg;
+		opacity: 0.5;
+		z-index: 1;
+	}
+
+	.blob-4 {
+		position: absolute;
+		height: 1600px;
+		bottom: 10%;
+		right: -30%;
+		rotate: -70deg;
+		opacity: 0.5;
+		z-index: -1;
 	}
 }
