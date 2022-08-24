@@ -1,10 +1,33 @@
 const handling = (app, db) => {
 	// Ajouter
-	app.post('/api/insert/module', (req, res) => {
-		const nom = req.body.nom;
+	app.post('/api/insert/module/non', (req, res) => {
+		const nom = req.body.nomModule;
 		const semestre = req.body.semestre;
-		const nombreSM = req.body.nombreSM;
-		const id_niveau = req.body.id_niveau;
+		const nombreSM = 0;
+		const id_niveau = req.body.idniveau;
+		const id_prof = req.body.prof;
+		const nmbr_semaines = req.body.nmbr_semaines;
+		const sqlInsert =
+			'INSERT INTO modules (nom, semestre, nmbr_ss_modules, id_niveau,id_prof,nmbr_semaines) VALUES (?,?,?,?,?,?)';
+
+		db.query(
+			sqlInsert,
+			[nom, semestre, nombreSM, id_niveau, id_prof, nmbr_semaines],
+			(err, result) => {
+				if (err) {
+					console.log(err);
+					res.send(false);
+				} else {
+					res.send(true);
+				}
+			},
+		);
+	});
+	app.post('/api/insert/module/oui', (req, res) => {
+		const nom = req.body.nomModule;
+		const semestre = req.body.semestre;
+		const nombreSM = 0;
+		const id_niveau = req.body.idniveau;
 		const sqlInsert =
 			'INSERT INTO modules (nom, semestre, nmbr_ss_modules, id_niveau) VALUES (?,?,?,?)';
 
@@ -13,16 +36,18 @@ const handling = (app, db) => {
 				console.log(err);
 				res.send(false);
 			} else {
-				res.send(true);
+				res.send(result);
 			}
 		});
 	});
 
 	// Afficher
 
-	app.get('/api/get/module', (req, res) => {
-		const sqlSelect = 'SELECT * FROM modules';
-		db.query(sqlSelect, (err, result) => {
+	app.post('/api/get/module', (req, res) => {
+		id_niveau = req.body.idniveau;
+
+		const sqlSelect = 'SELECT * FROM modules WHERE id_niveau= ?';
+		db.query(sqlSelect, [id_niveau], (err, result) => {
 			res.send(result);
 		});
 	});

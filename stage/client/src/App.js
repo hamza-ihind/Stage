@@ -7,12 +7,11 @@ import AjoutProf from './routes/Ajout-prof/ajout-prof.component';
 import AjoutFiliere from './routes/ajout-filiere/ajout-filiere.component';
 import TablesView from './components/tables-view/tables-view.component';
 import FormFiliere from './components/form-filiere/form-filiere.component';
-import DropList from './components/droplist/droplist.component.tsx';
+import AuthAdmin from './routes/authentication/auth-admin/auth-admin.component';
 import Home from './routes/home/home.component';
 import FormModule from './components/form-module/form-module.component';
 import AuthProf from './routes/authentication/auth-prof/auth-prof.component';
 import PageProf from './routes/page-prof/page-prof.component';
-import AuthAdmin from './routes/authentication/auth-admin/auth-admin.component';
 
 function App() {
 	return (
@@ -30,7 +29,6 @@ function App() {
 				<Route path='/auth-admin' element={<AuthAdmin />} />
 				<Route path='/page-prof/:nom' element={<PageProf />} />
 			</Route>
-			<Route path='/droplist' element={<DropList />} />
 		</Routes>
 	);
 }

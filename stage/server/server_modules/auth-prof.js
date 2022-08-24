@@ -22,6 +22,7 @@ const handling = (app, db) => {
 		db.query(sqlUpdate, [password, id], (err, result) => {
 			if (err) console.log(err);
 			res.send(result);
+			console.log(result);
 		});
 	});
 };

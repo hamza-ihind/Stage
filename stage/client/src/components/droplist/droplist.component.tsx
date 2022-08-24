@@ -1,22 +1,26 @@
 import React, { useEffect, useState } from "react";
 import chroma from "chroma-js";
-import { ColourOption } from "./data";
 import Select, { StylesConfig } from "react-select";
 import Axios from "axios";
 
-const DropList = () => {
+const DropList = (props) => {
+  interface ColourOption {
+    readonly value: string;
+    readonly label: string;
+    readonly color: string;
+    readonly isFixed?: boolean;
+    readonly isDisabled?: boolean;
+  }
   const [profs, setProfs] = useState([]);
-  
+
   const getProfs = () => {
     Axios.get("http://localhost:3001/api/get/prof").then((response) => {
       setProfs(response.data);
     });
   };
-
   useEffect(() => {
     getProfs();
   }, []);
-
   const getOptions = (profs) => {
     return profs.map((prof) => {
       return {
@@ -26,9 +30,7 @@ const DropList = () => {
       };
     });
   };
-
   const options = getOptions(profs);
-
   const dot = (color = "transparent") => ({
     alignItems: "center",
     display: "flex",
@@ -80,9 +82,9 @@ const DropList = () => {
     placeholder: (styles) => ({ ...styles, ...dot("#ccc") }),
     singleValue: (styles, { data }) => ({ ...styles, ...dot(data.color) }),
   };
-
   return (
     <Select
+      placeholder={<div style={{ fontSize: "16px" }}>chercher un prof</div>}
       styles={colourStyles}
       className="basic-single"
       classNamePrefix="select"
@@ -90,8 +92,12 @@ const DropList = () => {
       isSearchable={true}
       name="color"
       options={options}
+      onChange={(choice) => {
+        if (choice) {
+          props.onChange(choice);
+        }
+      }}
     />
   );
 };
-
 export default DropList;

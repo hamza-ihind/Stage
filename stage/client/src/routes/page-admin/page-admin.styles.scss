@@ -1,7 +1,7 @@
 .buttons-container {
 	display: flex;
-	justify-content: center;
-	flex-direction: column;
+	justify-content: space-around;
+	flex-direction: row;
 	padding: 40px;
 
 	.links-container {
@@ -9,7 +9,6 @@
 		flex-direction: column;
 		justify-content: center;
 		align-items: center;
-		margin-top: 70px;
 	}
 
 	.link {
@@ -31,4 +30,10 @@
 			height: 30px;
 		}
 	}
+}
+
+.title-admin {
+	margin: 150px auto 100px auto;
+	display: flex;
+	justify-content: center;
 }

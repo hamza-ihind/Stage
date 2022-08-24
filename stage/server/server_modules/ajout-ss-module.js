@@ -2,28 +2,41 @@ const handling = (app, db) => {
 	// Ajouter
 	app.post('/api/insert/ss_module', (req, res) => {
 		const nom = req.body.nom;
-		const nombreSemaines = req.body.nombreSemaines;
-		const id_module = req.body.id_module;
-		const id_prof = req.body.id_prof;
+		const nmbr_semaines = req.body.nombreSemaines;
+		const id_module = req.body.id;
+		const id_prof = req.body.prof;
 
 		const sqlInsert =
-			'INSERT INTO sous_modules (nom, nmbr_semaines, id_module, id_prof) VALUES (?,?,?,?)';
+			'INSERT INTO ss_modules (nom, nmbr_semaines, id_module, id_prof) VALUES (?,?,?,?)';
 
-		db.query(sqlInsert, [nom, nombreSemaines, 0, 0], (err, result) => {
-			if (err) {
-				console.log(err);
-				res.send(false);
-			} else {
-				res.send(true);
-			}
-		});
+		db.query(
+			sqlInsert,
+			[nom, nmbr_semaines, id_module, id_prof, id_module],
+			(err, result) => {
+				if (err) {
+					console.log(err);
+					res.send(false);
+				} else {
+					res.send(true);
+				}
+			},
+		);
+		db.query(
+			' Update modules Set nmbr_ss_modules = nmbr_ss_modules + 1 WHERE id=?',
+			[id_module],
+			(err, result) => {
+				if (err) console.log(err);
+			},
+		);
 	});
 
 	// Afficher
 
-	app.get('/api/get/ss_module', (req, res) => {
-		const sqlSelect = 'SELECT * FROM sous_modules';
-		db.query(sqlSelect, (err, result) => {
+	app.post('/api/get/ss_module', (req, res) => {
+		const id_module = req.body.id;
+		const sqlSelect = 'SELECT * FROM ss_modules WHERE id_module=?';
+		db.query(sqlSelect, [id_module], (err, result) => {
+			if (err) console.log(err);
 			res.send(result);
 		});
 	});
@@ -31,16 +44,25 @@ const handling = (app, db) => {
 	// Supprimer
 
 	app.post('/api/delete/ss_module', (req, res) => {
-		const id = req.body.id;
-		const sqlDelete = 'DELETE FROM sous_modules WHERE id = ?';
+		const id = req.body.id_ss_module;
+		const id_module = req.body.id_module;
+		const sqlDelete = 'DELETE FROM ss_modules WHERE id = ?';
 
 		db.query(sqlDelete, [id], (err, result) => {
 			if (err) {
+				console.log(err);
 				res.send(false);
 			} else {
 				res.send(true);
 			}
 		});
+		db.query(
+			' Update modules Set nmbr_ss_modules = nmbr_ss_modules - 1 WHERE id=?',
+			[id_module],
+			(err, result) => {
+				if (err) console.log(err);
+			},
+		);
 	});
 };
 

@@ -20,9 +20,11 @@ const FormFiliere = () => {
     const [modules, setModules] = useState([]);
 
     const refreshModules = () => {
-        Axios.get("http://localhost:3001/api/get/module").then((response) => {
-            setModules(response.data);
-        });
+        Axios.post("http://localhost:3001/api/get/module", { idniveau }).then(
+            (response) => {
+                setModules(response.data);
+            }
+        );
     };
 
     useEffect(() => {
@@ -39,7 +41,7 @@ const FormFiliere = () => {
         <>
             <div className="add-module">
                 <h1>
-                    {nomFiliere} {niveau} {"/idniv: " + idniveau}
+                    {nomFiliere} {niveau}
                 </h1>
 
                 <Link to="/form" state={{ nomFiliere, idniveau, niveau }}>

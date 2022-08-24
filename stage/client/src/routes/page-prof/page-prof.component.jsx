@@ -1,4 +1,4 @@
-import PasswordChange from "../../components/change-password/change-password.component"
+import PasswordChangeProf from "../../components/change-password-prof/change-password-prof.component"
 
 import { useParams, useLocation } from "react-router-dom"
 
@@ -25,7 +25,7 @@ const PageProf = () => {
                 </h2>
             </div>
             <div className="password-change">
-                <PasswordChange id={id} />
+                <PasswordChangeProf id={id} />
             </div>
         </div>
     )
