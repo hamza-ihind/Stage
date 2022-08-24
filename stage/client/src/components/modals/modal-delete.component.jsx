@@ -1,10 +1,9 @@
-import { useState } from 'react';
-import Button from 'react-bootstrap/Button';
-import Modal from 'react-bootstrap/Modal';
+import { useState } from "react";
+import Button from "react-bootstrap/Button";
+import Modal from "react-bootstrap/Modal";
 
 const ModalDelete = ({ text, deleteVar, value }) => {
-
-  const [show, setShow] = useState(false)
+  const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -12,7 +11,7 @@ const ModalDelete = ({ text, deleteVar, value }) => {
   const mixed = () => {
     setShow(false);
     deleteVar(value);
-  }
+  };
 
   return (
     <>
@@ -20,11 +19,9 @@ const ModalDelete = ({ text, deleteVar, value }) => {
         Supprimer
       </Button>
 
-      <Modal style={{ color: 'black' }} show={show} onHide={handleClose}>
-
+      <Modal style={{ color: "black" }} show={show} onHide={handleClose}>
         <Modal.Header closeButton>
           <Modal.Title>T'es sur ?</Modal.Title>
-
         </Modal.Header>
 
         <Modal.Body>Est ce que vous etes sur de supprimer {text}</Modal.Body>
@@ -33,14 +30,13 @@ const ModalDelete = ({ text, deleteVar, value }) => {
           <Button variant="secondary" onClick={handleClose}>
             Annuler
           </Button>
-          <Button variant="danger" onClick={mixed} >
+          <Button variant="danger" onClick={mixed}>
             Supprimer
           </Button>
         </Modal.Footer>
-
       </Modal>
     </>
   );
-}
+};
 
 export default ModalDelete;

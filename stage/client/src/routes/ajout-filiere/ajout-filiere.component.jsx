@@ -78,7 +78,6 @@ const AjoutFiliere = () => {
                     <tr>
                         <th>Filière</th>
                         <th>Nombre des niveaux</th>
-                        <th>Nombre des semaines</th>
                         <th>Actions</th>
                     </tr>
                 </thead>
@@ -89,7 +88,6 @@ const AjoutFiliere = () => {
                             <tr key={filiere.id} className="elems-container">
                                 <td className="elem">{filiere.nom}</td>
                                 <td className="elem">{filiere.nmbr_niveaux}</td>
-                                <td className="elem">{filiere.nmbr_semaines}</td>
                                 <td className="list-buttons">
                                     <ModalDelete
                                         text={filiere.nom}
