@@ -18,9 +18,11 @@ const DropList = (props) => {
       setProfs(response.data);
     });
   };
+
   useEffect(() => {
     getProfs();
   }, []);
+
   const getOptions = (profs) => {
     return profs.map((prof) => {
       return {
@@ -30,7 +32,9 @@ const DropList = (props) => {
       };
     });
   };
+
   const options = getOptions(profs);
+
   const dot = (color = "transparent") => ({
     alignItems: "center",
     display: "flex",
@@ -82,6 +86,7 @@ const DropList = (props) => {
     placeholder: (styles) => ({ ...styles, ...dot("#ccc") }),
     singleValue: (styles, { data }) => ({ ...styles, ...dot(data.color) }),
   };
+
   return (
     <Select
       placeholder={<div style={{ fontSize: "16px" }}>chercher un prof</div>}
@@ -100,4 +105,5 @@ const DropList = (props) => {
     />
   );
 };
+
 export default DropList;

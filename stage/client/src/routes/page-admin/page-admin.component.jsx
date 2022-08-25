@@ -21,7 +21,7 @@ const PageAdmin = () => {
             <div className='buttons-container'>
 
                 <div className="links-container">
-                    <Link to="/infos" >
+                    <Link to="/ajout-info" >
                         <Button size='lg' className="link">
                             <img src={Info} alt="info" className='icon-button-admin' />
                             Ajouter des infos
