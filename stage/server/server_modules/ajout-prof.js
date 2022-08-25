@@ -23,8 +23,9 @@ const handling = (app, db) => {
     });
   });
   app.post("/api/get/profbyid", (req, res) => {
-    const sqlSelect = "SELECT * FROM profs WHERE matricule=?";
+    const sqlSelect = "SELECT * FROM profs WHERE matricule= ? ";
     db.query(sqlSelect, [req.body.id], (err, result) => {
+      if (err) console.log(err);
       res.send(result);
     });
   });

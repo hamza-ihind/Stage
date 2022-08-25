@@ -22,8 +22,8 @@ const handling = (app, db) => {
   });
 
   app.put("/api/update/admin", (req, res) => {
-    const nom = req.body.nom;
-    const password = req.body.password;
+    const nom = req.body.id_admin;
+    const password = req.body.newPassword1;
 
     const sqlUpdate = "UPDATE admin SET password = ? where nom = ?";
 

@@ -26,10 +26,7 @@ const Navigation = () => {
                 </Link>
                 <div className='nav-links-container'>
                     <Link className='nav-link' to='/auth'>
-                        S'IDENTIFIER
-                    </Link>
-                    <Link className='nav-link' to='/page-admin'>
-                        Page Admin
+                        Quelque chose
                     </Link>
                 </div>
             </div>

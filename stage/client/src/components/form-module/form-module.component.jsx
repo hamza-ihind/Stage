@@ -39,13 +39,23 @@ const FormModule = () => {
     }
   };
   //
-  const createModule = () => {
+  const createSeanceNon = (id_module) => {
+    Axios.post("http://localhost:3001/api/insert/seance/non", {
+      prof,
+      id_module,
+      nomFiliere,
+      niveau,
+    });
+  };
+  const createModuleNon = () => {
     Axios.post("http://localhost:3001/api/insert/module/non", {
       nomModule,
       semestre,
       nmbr_semaines,
       prof,
       idniveau,
+    }).then((res) => {
+      createSeanceNon(res.data.insertId);
     });
   };
   const createModuleOui = () => {
@@ -151,7 +161,7 @@ const FormModule = () => {
               to={`/modules/${nomFiliere}${niveau}`}
               state={{ nomFiliere, idniveau, niveau }}
             >
-              <Button variant="primary" onClick={createModule}>
+              <Button variant="primary" onClick={createModuleNon}>
                 Ajouter
               </Button>
             </Link>

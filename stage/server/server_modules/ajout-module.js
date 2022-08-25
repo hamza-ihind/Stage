@@ -18,7 +18,7 @@ const handling = (app, db) => {
           console.log(err);
           res.send(false);
         } else {
-          res.send(true);
+          res.send(result);
         }
       }
     );

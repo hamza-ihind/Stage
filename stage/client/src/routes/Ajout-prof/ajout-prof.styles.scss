@@ -9,9 +9,16 @@
 
 	.add-prof {
 		display: flex;
-		justify-content: space-evenly;
+		justify-content: space-around;
 		margin: 50px 0;
 		gap: 250px;
+
+		.btn-ajouter {
+			margin: 0;
+			width: 150px;
+			height: 40px;
+			font-size: medium;
+		}
 	}
 
 	.container {

@@ -17,7 +17,7 @@ const handling = (app, db) => {
           console.log(err);
           res.send(false);
         } else {
-          res.send(true);
+          res.send(result);
         }
       }
     );
@@ -40,12 +40,20 @@ const handling = (app, db) => {
       res.send(result);
     });
   });
+  app.post("/api/get/ss_modulebyid", (req, res) => {
+    const id_ss_module = req.body.id_ss_module;
+    const sqlSelect = "SELECT * FROM ss_modules WHERE id=?";
+    db.query(sqlSelect, [id_ss_module], (err, result) => {
+      if (err) console.log(err);
+      res.send(result);
+    });
+  });
 
   // Supprimer
 
   app.post("/api/delete/ss_module", (req, res) => {
     const id = req.body.id_ss_module;
-    const id_module = req.body.id_module;
+
     const sqlDelete = "DELETE FROM ss_modules WHERE id = ?";
 
     db.query(sqlDelete, [id], (err, result) => {

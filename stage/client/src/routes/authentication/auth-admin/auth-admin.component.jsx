@@ -37,31 +37,36 @@ const AuthAdmin = () => {
 
 
     return (
-        <div className='auth-admin'>
-            <h1>Authetication Administrateur</h1>
-
-            <p>{loginStatus}</p>
-
+        <div className='container-auth'>
             <img src={Blob3} alt="blob" className='blob-3' />
             <img src={Blob4} alt="blob" className='blob-4' />
 
-            <Form className='form-prof'>
+            <div className='auth-admin'>
 
-                <Form.Group className="mb-4" controlId="nom">
-                    <Form.Label>Nom Complet</Form.Label>
-                    <Form.Control type="text" placeholder="Nom" onChange={(e) => { setNom(e.target.value) }} />
-                </Form.Group>
+                <h1>Authetication Administrateur</h1>
 
-                <Form.Group className="mb-4" controlId="password">
-                    <Form.Label>Mot de Passe</Form.Label>
-                    <Form.Control type="password" placeholder="password" onChange={(e) => { setPassword(e.target.value) }} />
-                </Form.Group>
+                <p>{loginStatus}</p>
 
-                <Button className='btn-auth-prof' onClick={login}>
-                    Connecter
-                </Button>
 
-            </Form>
+
+                <Form className='form-prof'>
+
+                    <Form.Group className="mb-4" controlId="nom">
+                        <Form.Label>Nom Complet</Form.Label>
+                        <Form.Control type="text" placeholder="Nom" onChange={(e) => { setNom(e.target.value) }} />
+                    </Form.Group>
+
+                    <Form.Group className="mb-4" controlId="password">
+                        <Form.Label>Mot de Passe</Form.Label>
+                        <Form.Control type="password" placeholder="password" onChange={(e) => { setPassword(e.target.value) }} />
+                    </Form.Group>
+
+                    <Button className='btn-auth-prof' onClick={login}>
+                        Connecter
+                    </Button>
+
+                </Form>
+            </div>
         </div>
     )
 }

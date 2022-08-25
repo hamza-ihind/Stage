@@ -7,7 +7,7 @@ import Filiere from "../../assets/icons/filiere.png"
 import View from "../../assets/icons/eye.png"
 
 import './page-admin.styles.scss'
-import PasswordChangeAdmin from '../../components/change-password-admin/change-password-admin.component'
+import ChangePasswordAdmin from '../../components/change-password-admin/change-password-admin.component'
 
 const PageAdmin = () => {
 
@@ -16,9 +16,11 @@ const PageAdmin = () => {
 
     return (
         <>
-            <h1 className='title-admin'> Bienvenue {id} </h1>
+
 
             <div className='buttons-container'>
+
+                <h1 className='title-admin'> Bienvenue {id} </h1>
 
                 <div className="links-container">
                     <Link to="/ajout-info" >
@@ -54,7 +56,7 @@ const PageAdmin = () => {
                 </div>
 
                 <div className='password-change'>
-                    <PasswordChangeAdmin id={id} />
+                    <ChangePasswordAdmin id={id} />
                 </div>
             </div>
         </>

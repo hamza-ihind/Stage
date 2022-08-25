@@ -78,7 +78,7 @@ const AjoutProf = () => {
                     onChange={(event) => {
                         setEmail(event.target.value);
                     }} />
-                <Button variant="primary" onClick={createProf}>Ajouter</Button>
+                <Button onClick={createProf}>Ajouter</Button>
             </div>
 
             <table className="container">

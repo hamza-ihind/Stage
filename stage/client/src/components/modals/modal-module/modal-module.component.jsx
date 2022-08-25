@@ -2,6 +2,7 @@ import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import React from "react";
 import Axios from "axios";
+import Table from "react-bootstrap/Table";
 import "./modal-modules.styles.scss";
 
 const ModalModule = ({ id_module }) => {
@@ -25,14 +26,15 @@ const ModalModule = ({ id_module }) => {
       }
     );
   };
-  function getProfById(id) {
+  const GetProfById = ({ id }) => {
+    const [nom, setNom] = React.useState("");
     Axios.post("http://localhost:3001/api/get/profbyid", { id }).then(
       (response) => {
-        console.log(response.data[0].nom);
-        return response.data[0].nom;
+        setNom(response.data[0].nom);
       }
     );
-  }
+    return nom;
+  };
   const InfoModule = () => {
     if (!module.nmbr_ss_modules)
       return (
@@ -51,18 +53,46 @@ const ModalModule = ({ id_module }) => {
           <div>
             <span className="label">Prof</span>
             <span>:{"  "}</span>
-            <span className="content">{getProfById(module.id_prof)}</span>
+            <span className="content">
+              {<GetProfById id={module.id_prof} />}
+            </span>
           </div>
         </div>
       );
     else
       return (
         <div>
-          {" "}
           <div>
             <span className="label">Semestre</span>
             <span>:{"  "}</span>
             <span className="content">{module.semestre}</span>
+          </div>
+          <div>
+            <span className="label">Les sous-modules:</span>
+            <div>
+              <Table striped bordered hover>
+                <thead>
+                  <tr>
+                    <th>Nom</th>
+                    <th>Nombre de semaines</th>
+                    <th>Prof</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {sousModules.map((sousModule) => {
+                    return (
+                      <tr key={sousModule.id} className="elems-container">
+                        <td className="elem">{sousModule.nom}</td>
+                        <td className="elem">{sousModule.nmbr_semaines}</td>
+                        <td className="elem">
+                          {<GetProfById id={sousModule.id_prof} />}
+                        </td>
+                      </tr>
+                    );
+                  })}
+                </tbody>
+              </Table>
+            </div>
           </div>
         </div>
       );

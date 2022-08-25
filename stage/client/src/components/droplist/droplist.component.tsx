@@ -18,7 +18,6 @@ const DropList = (props) => {
       setProfs(response.data);
     });
   };
-
   useEffect(() => {
     getProfs();
   }, []);
@@ -27,14 +26,12 @@ const DropList = (props) => {
     return profs.map((prof) => {
       return {
         value: prof.matricule,
-        label: prof.nom + "|  matricule: " + prof.matricule,
+        label: prof.nom + " (" + prof.matricule + ")",
         color: "#000000",
       };
     });
   };
-
   const options = getOptions(profs);
-
   const dot = (color = "transparent") => ({
     alignItems: "center",
     display: "flex",
@@ -86,7 +83,6 @@ const DropList = (props) => {
     placeholder: (styles) => ({ ...styles, ...dot("#ccc") }),
     singleValue: (styles, { data }) => ({ ...styles, ...dot(data.color) }),
   };
-
   return (
     <Select
       placeholder={<div style={{ fontSize: "16px" }}>chercher un prof</div>}
@@ -105,5 +101,4 @@ const DropList = (props) => {
     />
   );
 };
-
 export default DropList;

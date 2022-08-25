@@ -24,6 +24,14 @@ const AjoutSsModule = ({ id, nomFiliere, idniveau, niveau }) => {
     refreshSousModules();
   }, []);
 
+  const createSeanceOui = (id_ss_module) => {
+    Axios.post("http://localhost:3001/api/insert/seance/oui", {
+      prof,
+      id_ss_module,
+      nomFiliere,
+      niveau,
+    });
+  };
   const createSousModule = () => {
     Axios.post("http://localhost:3001/api/insert/ss_module", {
       nom,
@@ -31,6 +39,7 @@ const AjoutSsModule = ({ id, nomFiliere, idniveau, niveau }) => {
       prof,
       id,
     }).then((response) => {
+      createSeanceOui(response.data.insertId);
       refreshSousModules();
     });
   };
@@ -43,18 +52,23 @@ const AjoutSsModule = ({ id, nomFiliere, idniveau, niveau }) => {
       refreshSousModules();
     });
   };
-  function getProfById(id) {
+  const deleteModule = (idModule) => {
+    Axios.post("http://localhost:3001/api/delete/module", { id: idModule });
+  };
+  const GetProfById = ({ id }) => {
+    const [nom, setNom] = useState("");
     Axios.post("http://localhost:3001/api/get/profbyid", { id }).then(
       (response) => {
-        console.log(response.data[0].nom);
-        return response.data[0].nom;
+        setNom(response.data[0].nom);
       }
     );
-  }
+    return nom;
+  };
 
   return (
     <div className="oui-choice">
-      <h1>Ajouter des Sous modules à id {id}</h1>
+      <h1>Ajouter des Sous modules de {id}</h1>
+
       <div className="add-sous-module">
         <Form.Group>
           <Form.Label>Nom de sous-module</Form.Label>
@@ -88,11 +102,12 @@ const AjoutSsModule = ({ id, nomFiliere, idniveau, niveau }) => {
         </Form.Group>
         <Form.Group>
           <Form.Label></Form.Label>
-          <Button variant="primary" onClick={createSousModule}>
+          <Button className="button-Ui" onClick={createSousModule}>
             Ajouter
           </Button>
         </Form.Group>
       </div>
+
       <table className="container">
         <thead>
           <tr>
@@ -109,7 +124,9 @@ const AjoutSsModule = ({ id, nomFiliere, idniveau, niveau }) => {
               <tr key={sousModule.id} className="elems-container">
                 <td className="elem">{sousModule.nom}</td>
                 <td className="elem">{sousModule.nmbr_semaines}</td>
-                <td className="elem">{getProfById(sousModule.id_prof)}</td>
+                <td className="elem">
+                  <GetProfById id={sousModule.id_prof} />
+                </td>
                 <td className="list-buttons">
                   <ModalDelete
                     text={sousModule.nom}
@@ -126,7 +143,14 @@ const AjoutSsModule = ({ id, nomFiliere, idniveau, niveau }) => {
         to={`/modules/${nomFiliere}${niveau}`}
         state={{ nomFiliere, idniveau, niveau }}
       >
-        <Button variant="primary">Enregistrer</Button>
+        <Button
+          className="button-Ui"
+          onClick={() => {
+            if (sousModules.length === 0) deleteModule(id);
+          }}
+        >
+          Enregistrer
+        </Button>
       </Link>
     </div>
   );
