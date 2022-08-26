@@ -1,9 +1,30 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import Axios from "axios";
+
+import AjoutSeance from '../ajout-seance/ajout-seance.component.jsx'
 
 const TableProf = () => {
+
+  const [jours, setJours] = useState([])
+
+  const refreshJours = () => {
+    Axios.get("http://localhost:3001/api/get/jours").then((response) => {
+      setJours(response.data);
+    });
+  };
+
+  useEffect(() => {
+    refreshJours();
+  }, []);
+
+
+
+  const days = ['Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi']
+
   return (
     <>
       <table className="container table-prof">
+
         <thead>
           <tr>
             <th>Jours</th>
@@ -15,48 +36,26 @@ const TableProf = () => {
         </thead>
 
         <tbody>
-          <tr>
-            <td> Lundi </td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-          </tr>
-          <tr>
-            <td> Mardi </td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-          </tr>
-          <tr>
-            <td> Mercredi </td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-          </tr>
-          <tr>
-            <td> jeudi </td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-          </tr>
-          <tr>
-            <td> Vendredi </td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-          </tr>
-          <tr>
-            <td> Samedi </td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-          </tr>
+          {
+            days.map((day) => {
+              return (
+                <tr>
+                  <td> {day} </td>
+                  <td>
+                    <div>
+                      <div>
+
+                      </div>
+                      <AjoutSeance jour={day} seance='seance1' />
+                    </div>
+                  </td>
+                  <td> <AjoutSeance jour={day} seance='seance2' /> </td>
+                  <td> <AjoutSeance jour={day} seance='seance3' /> </td>
+                  <td> <AjoutSeance jour={day} seance='seance4' /> </td>
+                </tr>
+              )
+            })
+          }
         </tbody>
       </table>
     </>

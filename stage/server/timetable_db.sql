@@ -31,16 +31,25 @@ CREATE TABLE `emploi_profs` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `id_prof` varchar(45) NOT NULL,
   `id_jour` varchar(45) NOT NULL,
-  `seance1` varchar(45) DEFAULT NULL,
-  `seance2` varchar(45) DEFAULT NULL,
-  `seance3` varchar(45) DEFAULT NULL,
-  `seance4` varchar(45) DEFAULT NULL,
+  `seance1` int(11) DEFAULT NULL,
+  `seance2` int(11) DEFAULT NULL,
+  `seance3` int(11) DEFAULT NULL,
+  `seance4` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `idprof_idx` (`id_prof`),
   KEY `idjour_idx` (`id_jour`),
+  KEY `s1_idx` (`seance1`),
+  KEY `s2_idx` (`seance2`),
+  KEY `s3_idx` (`seance3`),
+  KEY `s4_idx` (`seance4`),
   CONSTRAINT `idjour` FOREIGN KEY (`id_jour`) REFERENCES `jours` (`jour`) ON DELETE CASCADE ON UPDATE NO ACTION,
-  CONSTRAINT `idprof` FOREIGN KEY (`id_prof`) REFERENCES `profs` (`matricule`) ON DELETE CASCADE ON UPDATE NO ACTION
+  CONSTRAINT `idprof` FOREIGN KEY (`id_prof`) REFERENCES `profs` (`matricule`) ON DELETE CASCADE ON UPDATE NO ACTION,
+  CONSTRAINT `s1` FOREIGN KEY (`seance1`) REFERENCES `seances` (`id`) ON DELETE SET NULL ON UPDATE NO ACTION,
+  CONSTRAINT `s2` FOREIGN KEY (`seance2`) REFERENCES `seances` (`id`) ON DELETE SET NULL ON UPDATE NO ACTION,
+  CONSTRAINT `s3` FOREIGN KEY (`seance3`) REFERENCES `seances` (`id`) ON DELETE SET NULL ON UPDATE NO ACTION,
+  CONSTRAINT `s4` FOREIGN KEY (`seance4`) REFERENCES `seances` (`id`) ON DELETE SET NULL ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
 
 CREATE TABLE `filieres` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -94,6 +103,7 @@ CREATE TABLE `seances` (
   `id_module` int(11) DEFAULT NULL,
   `nom_filiere` varchar(45) DEFAULT NULL,
   `niveau` int(11) DEFAULT NULL,
+  `semestre` int(11) DEFAULT NULL,  
   PRIMARY KEY (`id`),
   KEY `prof_idx` (`id_prof`),
   KEY `ss_module_idx` (`id_ss_module`),
@@ -102,6 +112,7 @@ CREATE TABLE `seances` (
   CONSTRAINT `prof` FOREIGN KEY (`id_prof`) REFERENCES `profs` (`matricule`) ON DELETE CASCADE ON UPDATE NO ACTION,
   CONSTRAINT `ssmodule` FOREIGN KEY (`id_ss_module`) REFERENCES `ss_modules` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
 
 
 CREATE TABLE `emploi_niveaux` (

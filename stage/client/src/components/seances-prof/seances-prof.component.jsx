@@ -1,9 +1,23 @@
 import { useState, useEffect } from "react";
 import Axios from "axios";
+import { Button } from "react-bootstrap";
 
 const SeancesProf = ({ id_prof }) => {
-
+  const Nsemestre = 2;
   const [seances, setSeances] = useState([]);
+
+  /////////////////////
+
+  /*  const isSelected = async (id_seance, id_prof) => {
+    const r = await Axios.post(
+      "http://localhost:3001/api/insert/is_seance_selected",
+      {
+        id_seance,
+        id_prof,
+      }
+    );
+    return r.data.length != 0;
+  }; */
 
   const refreshSeances = () => {
     Axios.post("http://localhost:3001/api/get/seances", { id_prof }).then(
@@ -13,20 +27,21 @@ const SeancesProf = ({ id_prof }) => {
           i++;
           return Object.assign(seance, { i });
         });
-        console.log(response.data)
-        setSeances(tab);
+        const tab2 = [];
+        for (let j = 0; j < tab.length; j++) {
+          if (tab[j].semestre === Nsemestre) {
+            tab2.push(tab[j]);
+          }
+        }
+        setSeances(tab2);
       }
     );
   };
-
   useEffect(() => {
     refreshSeances();
   }, []);
-
   const GetMatiereById = ({ idModule, idSsModule }) => {
-
     const [nom, setNom] = useState("");
-
     if (idModule) {
       Axios.post("http://localhost:3001/api/get/modulebyid", {
         id_module: idModule,
@@ -34,7 +49,6 @@ const SeancesProf = ({ id_prof }) => {
         setNom(response.data[0].nom);
       });
     }
-
     if (idSsModule) {
       Axios.post("http://localhost:3001/api/get/ss_modulebyid", {
         id_ss_module: idSsModule,
@@ -42,14 +56,11 @@ const SeancesProf = ({ id_prof }) => {
         setNom(response.data[0].nom);
       });
     }
-
     return <span>{nom}</span>;
-
   };
 
   return (
     <>
-
       <table className="container seances-prof">
         <thead>
           <tr>

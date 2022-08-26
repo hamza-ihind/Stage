@@ -11,6 +11,7 @@ const DropList = (props) => {
     readonly isFixed?: boolean;
     readonly isDisabled?: boolean;
   }
+
   const [profs, setProfs] = useState([]);
 
   const getProfs = () => {
@@ -18,6 +19,7 @@ const DropList = (props) => {
       setProfs(response.data);
     });
   };
+  
   useEffect(() => {
     getProfs();
   }, []);
@@ -31,6 +33,7 @@ const DropList = (props) => {
       };
     });
   };
+
   const options = getOptions(profs);
   const dot = (color = "transparent") => ({
     alignItems: "center",
@@ -83,6 +86,7 @@ const DropList = (props) => {
     placeholder: (styles) => ({ ...styles, ...dot("#ccc") }),
     singleValue: (styles, { data }) => ({ ...styles, ...dot(data.color) }),
   };
+
   return (
     <Select
       placeholder={<div style={{ fontSize: "16px" }}>chercher un prof</div>}
@@ -101,4 +105,5 @@ const DropList = (props) => {
     />
   );
 };
+
 export default DropList;

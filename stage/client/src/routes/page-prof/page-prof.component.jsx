@@ -1,5 +1,3 @@
-import PasswordChangeProf from "../../components/change-password-prof/change-password-prof.component";
-
 import { useParams, useLocation } from "react-router-dom";
 
 import "./page-prof.styles.scss";
@@ -16,9 +14,6 @@ const PageProf = () => {
 
   return (
     <div className="page-prof">
-
-      {console.log(id_prof)}
-
       <h1>Bienvenue {nom}</h1>
 
       <div className="container-page-prof">

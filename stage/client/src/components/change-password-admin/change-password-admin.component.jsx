@@ -60,7 +60,7 @@ const ChangePasswordAdmin = ({ id, nom }) => {
               <Form.Label>Confirmer le mot de passe</Form.Label>
               <Form.Control
                 type="password"
-                placeholder="Mot de passe"
+                placeholder="Confiermer le Mot de passe"
                 onChange={(e) => setNewPassword2(e.target.value)}
               />
             </Form.Group>

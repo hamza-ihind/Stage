@@ -6,7 +6,7 @@ import ModalDelete from "../../components/modals/modal-delete.component";
 import { Link } from "react-router-dom";
 import "./ajout-ss-module.styles.scss";
 
-const AjoutSsModule = ({ id, nomFiliere, idniveau, niveau }) => {
+const AjoutSsModule = ({ id, nomFiliere, idniveau, niveau, semestre }) => {
   const [sousModules, setSousModules] = useState([]);
   const [nombreSemaines, setNombreSemaines] = useState("");
   const [nom, setNom] = useState("");
@@ -30,6 +30,7 @@ const AjoutSsModule = ({ id, nomFiliere, idniveau, niveau }) => {
       id_ss_module,
       nomFiliere,
       niveau,
+      semestre,
     });
   };
   const createSousModule = () => {

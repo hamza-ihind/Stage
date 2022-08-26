@@ -45,6 +45,7 @@ const FormModule = () => {
       id_module,
       nomFiliere,
       niveau,
+      semestre,
     });
   };
   const createModuleNon = () => {
@@ -173,6 +174,7 @@ const FormModule = () => {
             nomFiliere={nomFiliere}
             idniveau={idniveau}
             niveau={niveau}
+            semestre={semestre}
           />
         )}
       </div>
