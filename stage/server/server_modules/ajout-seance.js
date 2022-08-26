@@ -1,65 +1,65 @@
 const handling = (app, db) => {
-  // Ajouter
-  app.post("/api/insert/seance/non", (req, res) => {
-    const id_prof = req.body.prof;
-    const id_module = req.body.id_module;
-    const nom_filiere = req.body.nomFiliere;
-    const niveau = req.body.niveau;
-    const semestre = req.body.semestre;
+	// Ajouter
+	app.post('/api/insert/seance/non', (req, res) => {
+		const id_prof = req.body.prof;
+		const id_module = req.body.id_module;
+		const nom_filiere = req.body.nomFiliere;
+		const niveau = req.body.niveau;
+		const semestre = req.body.semestre;
 
-    const sqlInsert =
-      "INSERT INTO seances (id_prof, id_module, nom_filiere, niveau,semestre) VALUES (?,?,?,?,?)";
+		const sqlInsert =
+			'INSERT INTO seances (id_prof, id_module, nom_filiere, niveau,semestre) VALUES (?,?,?,?,?)';
 
-    db.query(
-      sqlInsert,
-      [id_prof, id_module, nom_filiere, niveau, semestre],
-      (err, result) => {
-        if (err) {
-          console.log(err);
-          res.send(false);
-        } else {
-          res.send(result);
-        }
-      }
-    );
-  });
-  app.post("/api/insert/seance/oui", (req, res) => {
-    const id_prof = req.body.prof;
-    const id_ss_module = req.body.id_ss_module;
-    const nom_filiere = req.body.nomFiliere;
-    const niveau = req.body.niveau;
-    const semestre = req.body.semestre;
+		db.query(
+			sqlInsert,
+			[id_prof, id_module, nom_filiere, niveau, semestre],
+			(err, result) => {
+				if (err) {
+					console.log(err);
+					res.send(false);
+				} else {
+					res.send(result);
+				}
+			},
+		);
+	});
+	app.post('/api/insert/seance/oui', (req, res) => {
+		const id_prof = req.body.prof;
+		const id_ss_module = req.body.id_ss_module;
+		const nom_filiere = req.body.nomFiliere;
+		const niveau = req.body.niveau;
+		const semestre = req.body.semestre;
 
-    const sqlInsert =
-      "INSERT INTO seances (id_prof, id_ss_module, nom_filiere, niveau,semestre) VALUES (?,?,?,?,?)";
+		const sqlInsert =
+			'INSERT INTO seances (id_prof, id_ss_module, nom_filiere, niveau,semestre) VALUES (?,?,?,?,?)';
 
-    db.query(
-      sqlInsert,
-      [id_prof, id_ss_module, nom_filiere, niveau, semestre],
-      (err, result) => {
-        if (err) {
-          console.log(err);
-          res.send(false);
-        } else {
-          res.send(result);
-        }
-      }
-    );
-  });
+		db.query(
+			sqlInsert,
+			[id_prof, id_ss_module, nom_filiere, niveau, semestre],
+			(err, result) => {
+				if (err) {
+					console.log(err);
+					res.send(false);
+				} else {
+					res.send(result);
+				}
+			},
+		);
+	});
 
-  // Afficher
+	// Afficher
 
-  app.post("/api/get/seances", (req, res) => {
-    id_prof = req.body.id_prof;
+	app.post('/api/get/seances', (req, res) => {
+		id_prof = req.body.id_prof;
 
-    const sqlSelect = "SELECT * FROM seances WHERE id_prof= ?";
-    db.query(sqlSelect, [id_prof], (err, result) => {
-      if (err) console.log(err);
-      res.send(result);
-    });
-  });
+		const sqlSelect = 'SELECT * FROM seances WHERE id_prof= ?';
+		db.query(sqlSelect, [id_prof], (err, result) => {
+			if (err) console.log(err);
+			res.send(result);
+		});
+	});
 
-  /* 
+	/* 
     app.post("/api/get/modulebyid", (req, res) => {
       id_module = req.body.id_module;
   
@@ -87,5 +87,5 @@ const handling = (app, db) => {
 };
 
 module.exports = {
-  handling,
+	handling,
 };

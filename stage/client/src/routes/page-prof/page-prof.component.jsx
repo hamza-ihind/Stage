@@ -6,6 +6,7 @@ import SeancesProf from "../../components/seances-prof/seances-prof.component";
 import ChangePasswordProf from "../../components/change-password-prof/change-password-prof.component";
 
 const PageProf = () => {
+
   const location = useLocation();
 
   const id = location.state.id;
@@ -20,7 +21,7 @@ const PageProf = () => {
         <h2>Construction d'emploi</h2>
 
         <div className="table-emploi-prof">
-          <TableProf />
+          <TableProf id_prof={id_prof} />
         </div>
 
         <h2>Table des séances</h2>
