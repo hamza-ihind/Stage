@@ -5,17 +5,18 @@ import Axios from 'axios'
 
 import './ajout-seance.styles.scss'
 
-const AjoutSeance = ({ id, jour, seance }) => {
+const AjoutSeance = ({ idProf, jour, seance }) => {
 
     const [show, setShow] = useState(false);
 
     const [seances, setSeances] = useState([])
 
-    const id_prof = id
+    const id_prof = idProf
 
     const refreshSeances = () => {
         Axios.post("http://localhost:3001/api/get/seances").then((response) => {
             setSeances(response.data);
+            console.log(response)
         });
     };
 
@@ -41,7 +42,7 @@ const AjoutSeance = ({ id, jour, seance }) => {
 
                     <Form.Select aria-label="Default select example">
                         <option>Choisissez la séance</option>
-                        <option>{id_prof}</option>
+                        <option></option>
                     </Form.Select>
 
                     <div className='btn-ajt-seance'>

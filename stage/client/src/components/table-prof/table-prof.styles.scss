@@ -1,5 +1,25 @@
 .table-prof {
-	tr {
+	.table-td {
+		height: 100%;
+		width: 100%;
+
+		.cell-content {
+			position: relative;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			width: 250px;
+			height: 100px;
+
+			.btn-ajout-seance {
+				position: absolute;
+				bottom: 0;
+				left: 0;
+			}
+		}
+	}
+
+	td {
 		padding: 0;
 	}
 }

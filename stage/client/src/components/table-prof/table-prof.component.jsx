@@ -9,6 +9,8 @@ const TableProf = ({ id_prof }) => {
 
   const [jours, setJours] = useState([])
 
+  const idProf = id_prof
+
   const refreshJours = () => {
     Axios.get("http://localhost:3001/api/get/jours").then((response) => {
       setJours(response.data);
@@ -24,6 +26,7 @@ const TableProf = ({ id_prof }) => {
 
   return (
     <>
+
       <table className="container table-prof">
 
         <thead>
@@ -41,35 +44,50 @@ const TableProf = ({ id_prof }) => {
             days.map((day) => {
               return (
                 <tr className="seance" key={day}>
-                  <td> {day} </td>
+                  <td> <div className="table-td">
+                    <div className="cell-content">
+                      {day}
+                    </div>
+                  </div> </td>
 
                   <td>
-                    <div>
+                    <div className="table-td">
+                      <div className="cell-content">
+                        hamza
+                        <AjoutSeance idProf={idProf} jour={day} seance='seance1' className="ajout-seance" />
+                      </div>
 
                     </div>
-                    <AjoutSeance jour={day} seance='seance1' className="ajout-seance" />
-
                   </td>
 
                   <td>
-                    <div>
+                    <div className="table-td">
+                      <div className="cell-content">
+                        hamza
+                        <AjoutSeance idProf={idProf} jour={day} seance='seance1' className="ajout-seance" />
+                      </div>
 
                     </div>
-                    <AjoutSeance id={id_prof} jour={day} seance='seance2' />
                   </td>
 
                   <td>
-                    <div>
+                    <div className="table-td">
+                      <div className="cell-content">
+                        hamza
+                        <AjoutSeance idProf={idProf} jour={day} seance='seance1' className="ajout-seance" />
+                      </div>
 
                     </div>
-                    <AjoutSeance id={id_prof} jour={day} seance='seance3' />
                   </td>
 
                   <td>
-                    <div>
+                    <div className="table-td">
+                      <div className="cell-content">
+                        hamza
+                        <AjoutSeance idProf={idProf} jour={day} seance='seance1' className="ajout-seance" />
+                      </div>
 
                     </div>
-                    <AjoutSeance id={id_prof} jour={day} seance='seance4' />
                   </td>
                 </tr>
               )
