@@ -25,8 +25,14 @@ const Navigation = () => {
                     <img className='logo' src={Logo} alt="logo" />
                 </Link>
                 <div className='nav-links-container'>
-                    <Link className='nav-link' to='/auth'>
-                        Quelque chose
+                    <Link className='nav-link' to='/auth-admin'>
+                        Connection admin
+                    </Link>
+                    <Link className='nav-link' to='/auth-prof'>
+                        Connection Prof
+                    </Link>
+                    <Link className='nav-link' to='/contact'>
+                        Contact
                     </Link>
                 </div>
             </div>

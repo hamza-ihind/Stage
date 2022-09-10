@@ -1,34 +1,37 @@
 import { useState, useEffect } from "react";
 import Axios from "axios";
 
-import AjoutSeance from '../ajout-seance/ajout-seance.component.jsx'
+import AjoutSeance from "../ajout-seance/ajout-seance.component.jsx";
 
-import './table-prof.styles.scss'
+import "./table-prof.styles.scss";
 
-const TableProf = ({ id_prof }) => {
+const TableProf = ({ id_prof, Nsemestre }) => {
+  const [seances, setSeances] = useState([]);
 
-  const [jours, setJours] = useState([])
-
-  const idProf = id_prof
-
-  const refreshJours = () => {
-    Axios.get("http://localhost:3001/api/get/jours").then((response) => {
-      setJours(response.data);
-      console.log(response.data)
-    });
+  const refreshSeances = () => {
+    Axios.post("http://localhost:3001/api/get/seances", { id_prof }).then(
+      (response) => {
+        const tab = response.data;
+        const tab2 = [];
+        for (let j = 0; j < tab.length; j++) {
+          if (tab[j].semestre === Nsemestre) {
+            tab2.push(tab[j]);
+          }
+        }
+        setSeances(tab2);
+      }
+    );
   };
 
   useEffect(() => {
-    refreshJours();
+    refreshSeances();
   }, []);
 
-  const days = ['Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi']
+  const days = ["Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi", "Samedi"];
 
   return (
     <>
-
       <table className="container table-prof">
-
         <thead>
           <tr>
             <th>Jours</th>
@@ -40,59 +43,86 @@ const TableProf = ({ id_prof }) => {
         </thead>
 
         <tbody>
-          {
-            days.map((day) => {
-              return (
-                <tr className="seance" key={day}>
-                  <td> <div className="table-td">
+          {days.map((day) => {
+            return (
+              <tr className="seance" key={day} style={{ border: "none" }}>
+                <td
+                  style={{
+                    background: "#3c186e",
+                    color: "white",
+                  }}
+                >
+                  <div className="table-td">
+                    <div className="cell-content">{day}</div>
+                  </div>
+                </td>
+
+                <td style={{ borderRight: "1px black solid" }}>
+                  <div className="table-td">
                     <div className="cell-content">
-                      {day}
+                      <AjoutSeance
+                        key={JSON.stringify(seances)}
+                        tabSeances={seances}
+                        idProf={id_prof}
+                        jour={day}
+                        seance={"seance1"}
+                        refreshSeances={refreshSeances}
+                        className="ajout-seance"
+                      />
                     </div>
-                  </div> </td>
+                  </div>
+                </td>
 
-                  <td>
-                    <div className="table-td">
-                      <div className="cell-content">
-                        hamza
-                        <AjoutSeance idProf={idProf} jour={day} seance='seance1' className="ajout-seance" />
-                      </div>
-
+                <td style={{ borderRight: "1px black solid" }}>
+                  <div className="table-td">
+                    <div className="cell-content">
+                      <AjoutSeance
+                        key={JSON.stringify(seances)}
+                        tabSeances={seances}
+                        idProf={id_prof}
+                        jour={day}
+                        seance={"seance2"}
+                        className="ajout-seance"
+                        refreshSeances={refreshSeances}
+                      />
                     </div>
-                  </td>
+                  </div>
+                </td>
 
-                  <td>
-                    <div className="table-td">
-                      <div className="cell-content">
-                        hamza
-                        <AjoutSeance idProf={idProf} jour={day} seance='seance1' className="ajout-seance" />
-                      </div>
-
+                <td style={{ borderRight: "1px black solid" }}>
+                  <div className="table-td">
+                    <div className="cell-content">
+                      <AjoutSeance
+                        key={JSON.stringify(seances)}
+                        tabSeances={seances}
+                        idProf={id_prof}
+                        jour={day}
+                        seance={"seance3"}
+                        refreshSeances={refreshSeances}
+                        className="ajout-seance"
+                      />
                     </div>
-                  </td>
+                  </div>
+                </td>
 
-                  <td>
-                    <div className="table-td">
-                      <div className="cell-content">
-                        hamza
-                        <AjoutSeance idProf={idProf} jour={day} seance='seance1' className="ajout-seance" />
-                      </div>
-
+                <td>
+                  <div className="table-td">
+                    <div className="cell-content">
+                      <AjoutSeance
+                        key={JSON.stringify(seances)}
+                        tabSeances={seances}
+                        idProf={id_prof}
+                        jour={day}
+                        seance={"seance4"}
+                        refreshSeances={refreshSeances}
+                        className="ajout-seance"
+                      />
                     </div>
-                  </td>
-
-                  <td>
-                    <div className="table-td">
-                      <div className="cell-content">
-                        hamza
-                        <AjoutSeance idProf={idProf} jour={day} seance='seance1' className="ajout-seance" />
-                      </div>
-
-                    </div>
-                  </td>
-                </tr>
-              )
-            })
-          }
+                  </div>
+                </td>
+              </tr>
+            );
+          })}
         </tbody>
       </table>
     </>

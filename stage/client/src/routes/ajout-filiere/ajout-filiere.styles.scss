@@ -7,7 +7,8 @@
 .add-filiere {
 	display: flex;
 	justify-content: space-around;
-	margin: 50px 0;
+	align-items: center;
+	margin: 80px 0;
 	gap: 100px;
 }
 
@@ -22,7 +23,7 @@
 	box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
 
 	& thead tr {
-		background-color: #a812ff;
+		background-color: #4c038b;
 		color: white;
 		text-align: center;
 		font-weight: bold;
@@ -51,5 +52,21 @@
 		justify-content: center;
 		align-items: center;
 		gap: 20px;
+	}
+}
+
+.btn-ajouter {
+	display: flex;
+	font-size: medium;
+	height: 45px;
+	width: 100px;
+	color: white;
+	justify-content: space-evenly;
+	align-items: center;
+	border-radius: 10px;
+	border: none;
+	background-color: rgb(64, 1, 116);
+	&:hover {
+		background-color: rgb(40, 7, 68);
 	}
 }

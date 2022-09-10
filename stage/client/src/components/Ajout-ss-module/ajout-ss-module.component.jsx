@@ -7,6 +7,7 @@ import { Link } from "react-router-dom";
 import "./ajout-ss-module.styles.scss";
 
 const AjoutSsModule = ({ id, nomFiliere, idniveau, niveau, semestre }) => {
+
   const [sousModules, setSousModules] = useState([]);
   const [nombreSemaines, setNombreSemaines] = useState("");
   const [nom, setNom] = useState("");
@@ -31,6 +32,7 @@ const AjoutSsModule = ({ id, nomFiliere, idniveau, niveau, semestre }) => {
       nomFiliere,
       niveau,
       semestre,
+      idniveau,
     });
   };
   const createSousModule = () => {
@@ -56,6 +58,7 @@ const AjoutSsModule = ({ id, nomFiliere, idniveau, niveau, semestre }) => {
   const deleteModule = (idModule) => {
     Axios.post("http://localhost:3001/api/delete/module", { id: idModule });
   };
+
   const GetProfById = ({ id }) => {
     const [nom, setNom] = useState("");
     Axios.post("http://localhost:3001/api/get/profbyid", { id }).then(
@@ -68,7 +71,8 @@ const AjoutSsModule = ({ id, nomFiliere, idniveau, niveau, semestre }) => {
 
   return (
     <div className="oui-choice">
-      <h1>Ajouter des Sous modules de {id}</h1>
+
+      <h1>Ajouter des Sous modules de {nomFiliere}</h1>
 
       <div className="add-sous-module">
         <Form.Group>

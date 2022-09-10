@@ -4,20 +4,29 @@
 	.title {
 		display: flex;
 		justify-content: center;
-		margin: 50px 0;
+		margin: 80px 0;
 	}
 
 	.add-prof {
 		display: flex;
 		justify-content: space-around;
-		margin: 50px 0;
+		margin: 80px 0;
 		gap: 250px;
 
 		.btn-ajouter {
-			margin: 0;
-			width: 150px;
-			height: 40px;
+			display: flex;
 			font-size: medium;
+			height: 40px;
+			width: 260px;
+			color: white;
+			justify-content: space-evenly;
+			align-items: center;
+			border-radius: 10px;
+			border: none;
+			background-color: rgb(64, 1, 116);
+			&:hover {
+				background-color: rgb(40, 7, 68);
+			}
 		}
 	}
 
@@ -32,7 +41,7 @@
 		box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
 
 		& thead tr {
-			background-color: #9728ff;
+			background-color: #4c038b;
 			color: white;
 			text-align: center;
 			font-weight: bold;
@@ -63,4 +72,10 @@
 			gap: 20px;
 		}
 	}
+}
+
+.message-required {
+	margin: 40px;
+	text-align: center;
+	font-size: larger;
 }

@@ -1,32 +1,13 @@
 import { useState, useEffect } from "react";
 import Axios from "axios";
-import { Button } from "react-bootstrap";
-
-const SeancesProf = ({ id_prof }) => {
-  const Nsemestre = 2;
+import "./seances-prof.styles.scss";
+const SeancesProf = ({ id_prof, Nsemestre }) => {
   const [seances, setSeances] = useState([]);
-
-  /////////////////////
-
-  /*  const isSelected = async (id_seance, id_prof) => {
-    const r = await Axios.post(
-      "http://localhost:3001/api/insert/is_seance_selected",
-      {
-        id_seance,
-        id_prof,
-      }
-    );
-    return r.data.length != 0;
-  }; */
 
   const refreshSeances = () => {
     Axios.post("http://localhost:3001/api/get/seances", { id_prof }).then(
       (response) => {
-        let i = 0;
-        const tab = response.data.map((seance) => {
-          i++;
-          return Object.assign(seance, { i });
-        });
+        const tab = response.data;
         const tab2 = [];
         for (let j = 0; j < tab.length; j++) {
           if (tab[j].semestre === Nsemestre) {
@@ -34,6 +15,7 @@ const SeancesProf = ({ id_prof }) => {
           }
         }
         setSeances(tab2);
+        // getData(tab2);
       }
     );
   };
@@ -56,7 +38,7 @@ const SeancesProf = ({ id_prof }) => {
         setNom(response.data[0].nom);
       });
     }
-    return <span>{nom}</span>;
+    return <>{nom}</>;
   };
 
   return (
@@ -64,7 +46,6 @@ const SeancesProf = ({ id_prof }) => {
       <table className="container seances-prof">
         <thead>
           <tr>
-            <th>N°</th>
             <th>Matière</th>
             <th>Filiere</th>
             <th>niveau</th>
@@ -74,8 +55,15 @@ const SeancesProf = ({ id_prof }) => {
         <tbody>
           {seances.map((seance) => {
             return (
-              <tr key={seance.id} className="elems-container">
-                <td className="elem">{seance.i}</td>
+              <tr
+                key={seance.id}
+                className={
+                  "elems-container " + (seance.is_selected ? "selected" : "")
+                }
+                /* style={
+                  seance.is_selected ? { backgroundColor: "lightgreen" } : {}
+                } */
+              >
                 <td className="elem">
                   <GetMatiereById
                     idModule={seance.id_module}

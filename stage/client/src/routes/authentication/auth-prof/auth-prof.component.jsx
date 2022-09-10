@@ -17,7 +17,7 @@ const AuthProf = () => {
 
   const [nom, setNom] = useState("");
   const [password, setPassword] = useState("");
-  const [loginStatus, setLoginStatus] = useState("");
+  const [message, setMessage] = useState("");
 
   const propsProf = {
     nom,
@@ -30,25 +30,40 @@ const AuthProf = () => {
       password,
     }).then((response) => {
       if (response.data.length) {
-        setLoginStatus("");
+        setMessage("");
         navigate(`/page-prof/${nom}`, {
           state: Object.assign(propsProf, {
             id_prof: response.data[0].matricule,
           }),
         });
-      } else {
-        setLoginStatus("Le prof n'existe pas dans la base des données");
+      } else if (!response.data.length && (password !== '' && nom !== '')) {
+        setMessage("Le prof n'existe pas dans la base des données");
       }
     });
   };
+
+  const required = () => {
+    if (nom === '') {
+      setMessage("Veuillez entrer votre nom")
+    }
+    else if (password === "") {
+      setMessage("Veuillez entrer votre mot de passe")
+    }
+  }
+
+  const mixed = () => {
+    login()
+    required()
+  }
 
   return (
     <div className="container-auth">
 
       <div className="auth-prof">
-        <h1>Authetication Professeur</h1>
 
-        <p>{loginStatus}</p>
+        <h1 >Authetication Professeur</h1>
+
+        <p className="message-auth">{message}</p>
 
         <img src={Blob3} alt="blob" className="blob-3" />
         <img src={Blob4} alt="blob" className="blob-4" />
@@ -76,7 +91,7 @@ const AuthProf = () => {
             />
           </Form.Group>
 
-          <Button onClick={login} className="btn-auth-prof">
+          <Button onClick={mixed} className="btn-auth-prof">
             Connecter
           </Button>
         </Form>

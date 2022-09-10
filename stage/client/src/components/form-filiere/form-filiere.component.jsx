@@ -41,12 +41,13 @@ const FormFiliere = () => {
   return (
     <>
       <div className="add-module">
-        <h1>
+
+        <h1 >
           {nomFiliere} {niveau}
         </h1>
 
         <Link to="/form" state={{ nomFiliere, idniveau, niveau }}>
-          <Button variant="warning">Ajouter un Module</Button>
+          <Button className="button-Ui">Ajouter un Module</Button>
         </Link>
 
         <table className="container table-modules">

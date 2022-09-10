@@ -4,7 +4,6 @@ import { Button } from 'react-bootstrap'
 import Prof from "../../assets/icons/prof.png"
 import Info from "../../assets/icons/info.png"
 import Filiere from "../../assets/icons/filiere.png"
-import View from "../../assets/icons/eye.png"
 
 import './page-admin.styles.scss'
 import ChangePasswordAdmin from '../../components/change-password-admin/change-password-admin.component'
@@ -46,13 +45,6 @@ const PageAdmin = () => {
                         </Button>
                     </Link>
 
-                    <Link to="/view-infos" >
-                        <Button size='lg' className="link">
-                            <img src={View} alt="view" className='icon-button-admin' />
-
-                            Voir des infos
-                        </Button>
-                    </Link>
                 </div>
 
                 <div className='password-change'>

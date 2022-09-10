@@ -68,7 +68,7 @@ const AjoutFiliere = () => {
                     />
                 </Form.Group>
 
-                <Button variant="primary" onClick={createfiliere}>
+                <Button onClick={createfiliere} className='btn-ajouter'>
                     Ajouter
                 </Button>
             </div>

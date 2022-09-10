@@ -18,7 +18,7 @@ const AuthAdmin = () => {
     const [nom, setNom] = useState('')
     const [password, setPassword] = useState('')
 
-    const [loginStatus, setLoginStatus] = useState('')
+    const [message, setMessage] = useState('')
 
     const login = () => {
         Axios.post('http://localhost:3001/api/login/admin', {
@@ -26,28 +26,40 @@ const AuthAdmin = () => {
             password
         }).then((response) => {
             if (response.data.length) {
-                setLoginStatus('')
+                setMessage('')
                 navigate(`/page-admin`, { state: { nom } })
             }
-            else {
-                setLoginStatus('L\'admin n\'existe pas dans la base des données')
+            else if (!response.data.length && (password !== '' && nom !== '')) {
+                setMessage('L\'admin n\'existe pas dans la base des données')
             }
         })
     }
 
+    const required = () => {
+        if (nom === '') {
+            setMessage("Veuillez entrer votre nom")
+        }
+        else if (password === "") {
+            setMessage("Veuillez entrer votre mot de passe")
+        }
+    }
+
+    const mixed = () => {
+        login()
+        required()
+    }
 
     return (
         <div className='container-auth'>
+
             <img src={Blob3} alt="blob" className='blob-3' />
             <img src={Blob4} alt="blob" className='blob-4' />
 
             <div className='auth-admin'>
 
-                <h1>Authetication Administrateur</h1>
+                <h1 >Authetication Administrateur</h1>
 
-                <p>{loginStatus}</p>
-
-
+                <p className="title-auth">{message}</p>
 
                 <Form className='form-prof'>
 
@@ -61,7 +73,7 @@ const AuthAdmin = () => {
                         <Form.Control type="password" placeholder="password" onChange={(e) => { setPassword(e.target.value) }} />
                     </Form.Group>
 
-                    <Button className='btn-auth-prof' onClick={login}>
+                    <Button className='btn-auth-prof' onClick={mixed}>
                         Connecter
                     </Button>
 

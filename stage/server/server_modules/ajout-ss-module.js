@@ -53,7 +53,7 @@ const handling = (app, db) => {
 
   app.post("/api/delete/ss_module", (req, res) => {
     const id = req.body.id_ss_module;
-
+    const id_module = req.body.id_module;
     const sqlDelete = "DELETE FROM ss_modules WHERE id = ?";
 
     db.query(sqlDelete, [id], (err, result) => {

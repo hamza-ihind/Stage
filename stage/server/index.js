@@ -22,6 +22,7 @@ const authProf = require("./server_modules/auth-prof.js");
 const authAdmin = require("./server_modules/auth-admin.js");
 const seances = require("./server_modules/ajout-seance");
 const emploiProf = require("./server_modules/emploi-prof");
+const emploiNiveau = require("./server_modules/emploi-niveau");
 
 const db = mysql.createPool({
   user: dbconfig.USER,
@@ -51,3 +52,4 @@ authProf.handling(app, db);
 authAdmin.handling(app, db);
 seances.handling(app, db);
 emploiProf.handling(app, db);
+emploiNiveau.handling(app, db);

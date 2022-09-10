@@ -20,39 +20,12 @@ const Home = () => (
 
             <div className='first-div'>
                 <h1 className='title-home'> Bienvenue au Site de Stage de <span className='span-name'>Tiatro</span> et <span className='span-name'>E11even</span>  </h1>
-                <h4>le meilleur site web pour créer des horaires pour les enseignants et les étudiants</h4>
-                <div className='buttons-home'>
-                    <Link to='/auth-admin'>
-                        <Button size='lg' className='button-home'>
-                            <img src={Admin} alt="admin" className='icon-button' />
-                            Connection Admin
-                        </Button>
-                    </Link>
-                    <Link to='/auth-prof'>
-                        <Button size='lg' className='button-home'>
-                            <img src={Prof} alt="prof" className='icon-button' />
-                            Connection Prof
-                        </Button>
-                    </Link>
-                </div>
+                <h4 className='desc'>le meilleur site web pour créer des horaires pour les enseignants et les étudiants</h4>
             </div>
 
             <img src={Vect} className="vect" />
 
         </div>
-
-        <EtudiantEmploi />
-        <EtudiantEmploi />
-        <EtudiantEmploi />
-        <EtudiantEmploi />
-        <EtudiantEmploi />
-        <EtudiantEmploi />
-        <EtudiantEmploi />
-        <EtudiantEmploi />
-        <EtudiantEmploi />
-        <EtudiantEmploi />
-        <EtudiantEmploi />
-
     </div >
 )
 

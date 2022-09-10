@@ -6,6 +6,10 @@
 	justify-content: center;
 	overflow: hidden;
 
+	.title-table {
+		margin: 50px auto;
+	}
+
 	.container-page-prof {
 		display: flex;
 		align-items: center;
@@ -19,12 +23,11 @@
 	}
 
 	.table-emploi-prof {
-		margin: 70px 0px;
+		margin: 0px 0px 80px 0px;
 		width: 200%;
 	}
 
 	.table-seances-prof {
-		margin: 70px 0;
 		width: 200%;
 	}
 }

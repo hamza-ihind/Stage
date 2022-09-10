@@ -4,8 +4,10 @@ import "./page-prof.styles.scss";
 import TableProf from "../../components/table-prof/table-prof.component";
 import SeancesProf from "../../components/seances-prof/seances-prof.component";
 import ChangePasswordProf from "../../components/change-password-prof/change-password-prof.component";
+import { useState } from "react";
 
 const PageProf = () => {
+  const Nsemestre = 1;
 
   const location = useLocation();
 
@@ -15,19 +17,23 @@ const PageProf = () => {
 
   return (
     <div className="page-prof">
-      <h1>Bienvenue {nom}</h1>
+
+
 
       <div className="container-page-prof">
-        <h2>Construction d'emploi</h2>
+
+        <h1>Bienvenue {nom}</h1>
+
+        <h2 className="title-table">Construction d'emploi</h2>
 
         <div className="table-emploi-prof">
-          <TableProf id_prof={id_prof} />
+          <TableProf id_prof={id_prof} Nsemestre={Nsemestre} />
         </div>
 
-        <h2>Table des séances</h2>
+        <h2 className="title-table">Toutes les seances</h2>
 
         <div className="table-seances-prof">
-          <SeancesProf id_prof={id_prof} />
+          <SeancesProf id_prof={id_prof} Nsemestre={Nsemestre} />
         </div>
       </div>
 

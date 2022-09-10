@@ -46,6 +46,7 @@ const FormModule = () => {
       nomFiliere,
       niveau,
       semestre,
+      idniveau,
     });
   };
   const createModuleNon = () => {
@@ -72,7 +73,8 @@ const FormModule = () => {
   return (
     <>
       <div className="form-module">
-        <h1>
+
+        <h1 className="title-module">
           Modules de {nomFiliere} {niveau}
         </h1>
 
@@ -162,7 +164,7 @@ const FormModule = () => {
               to={`/modules/${nomFiliere}${niveau}`}
               state={{ nomFiliere, idniveau, niveau }}
             >
-              <Button variant="primary" onClick={createModuleNon}>
+              <Button className="btn-ajouter btn-ajouter-ss-module" onClick={createModuleNon}>
                 Ajouter
               </Button>
             </Link>
