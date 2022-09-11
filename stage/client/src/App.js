@@ -12,22 +12,25 @@ import FormModule from './components/form-module/form-module.component';
 import AuthProf from './routes/authentication/auth-prof/auth-prof.component';
 import PageProf from './routes/page-prof/page-prof.component';
 import AjoutInfo from './routes/ajout-info/ajout-info.component';
+import Footer from './routes/footer/footer.component';
 
 function App() {
 	return (
 		<Routes>
 			<Route path='/' element={<Navigation />}>
-				<Route index element={<Home />} />
-				<Route path='/page-admin' element={<PageAdmin />} />
-				<Route path='/profs' element={<AjoutProf />} />
-				<Route path='/filieres' element={<AjoutFiliere />} />
-				<Route path='/infos' element={<AjoutFiliere />} />
-				<Route path='/modules/:name:id' element={<FormFiliere />} />
-				<Route path='/form' element={<FormModule />} />
-				<Route path='/auth-prof' element={<AuthProf />} />
-				<Route path='/auth-admin' element={<AuthAdmin />} />
-				<Route path='/page-prof/:nom' element={<PageProf />} />
-				<Route path='/ajout-info' element={<AjoutInfo />} />
+				<Route path='/' element={<Footer />}>
+					<Route index element={<Home />} />
+					<Route path='/page-admin' element={<PageAdmin />} />
+					<Route path='/profs' element={<AjoutProf />} />
+					<Route path='/filieres' element={<AjoutFiliere />} />
+					<Route path='/infos' element={<AjoutFiliere />} />
+					<Route path='/modules/:name:id' element={<FormFiliere />} />
+					<Route path='/form' element={<FormModule />} />
+					<Route path='/auth-prof' element={<AuthProf />} />
+					<Route path='/auth-admin' element={<AuthAdmin />} />
+					<Route path='/page-prof/:nom' element={<PageProf />} />
+					<Route path='/ajout-info' element={<AjoutInfo />} />
+				</Route>
 			</Route>
 		</Routes>
 	);

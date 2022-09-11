@@ -1,0 +1,41 @@
+.footer {
+	background-color: rgb(57, 1, 95);
+	padding: 30px 0 30px 0;
+
+	hr {
+		width: 70%;
+		margin: 20px auto;
+	}
+
+	.upper-section {
+		display: flex;
+		justify-content: space-around;
+		align-items: center;
+
+		.container-footer {
+			display: flex;
+			flex-direction: column;
+			gap: 0.7rem;
+			font-size: larger;
+			text-align: center;
+
+			li:hover {
+				cursor: pointer;
+				color: rgb(196, 106, 255);
+				transition: 0.5s;
+			}
+		}
+
+		.logo-footer {
+			height: 60px;
+		}
+	}
+
+	.lower-section {
+		margin-top: 50px;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		flex-direction: column;
+	}
+}
